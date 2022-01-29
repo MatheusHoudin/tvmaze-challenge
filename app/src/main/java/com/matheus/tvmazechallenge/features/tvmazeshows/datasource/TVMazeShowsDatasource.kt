@@ -1,4 +1,4 @@
-package com.matheus.tvmazechallenge.features.tvmazeshows.datasource.shows
+package com.matheus.tvmazechallenge.features.tvmazeshows.datasource
 
 import com.matheus.tvmazechallenge.shared.model.TVShowModel
 

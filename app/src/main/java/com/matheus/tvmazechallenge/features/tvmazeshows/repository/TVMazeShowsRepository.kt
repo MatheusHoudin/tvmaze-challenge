@@ -1,4 +1,4 @@
-package com.matheus.tvmazechallenge.features.tvmazeshows.repository.shows
+package com.matheus.tvmazechallenge.features.tvmazeshows.repository
 
 import com.matheus.tvmazechallenge.features.tvmazeshows.entity.TVShowEntity
 import com.matheus.tvmazechallenge.shared.base.StateData

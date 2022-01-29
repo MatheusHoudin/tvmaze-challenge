@@ -8,9 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.matheus.tvmazechallenge.databinding.TvmazeShowsFragmentBinding
 import com.matheus.tvmazechallenge.features.tvmazeshows.viewmodel.TVMazeShowsViewModel
+import com.matheus.tvmazechallenge.shared.adapter.TVMazeShowAdapter
 import com.matheus.tvmazechallenge.shared.base.StateData
 import com.matheus.tvmazechallenge.shared.util.EndOfScrollListener
-import org.koin.android.ext.android.bind
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class TVMazeShowsFragment : Fragment() {
@@ -24,16 +24,20 @@ class TVMazeShowsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val binding = TvmazeShowsFragmentBinding.inflate(inflater, container, false)
-        fetchTVShows()
-        configureTVShowsList(binding)
+        configureBinding(binding)
         configureTVMazeShowListener(binding)
         return binding.root
     }
 
-    private fun fetchTVShows() = viewModel.fetchShows()
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        fetchTVShows()
+    }
 
-    private fun configureTVShowsList(binding: TvmazeShowsFragmentBinding) {
-        binding.tvmazeShowsFragmentRvShows.apply {
+    private fun configureBinding(binding: TvmazeShowsFragmentBinding) = with(binding) {
+        thereIsError = false
+        tvmazeShowsFragmentEmRetry.setOnRetryClickListener { fetchTVShows() }
+        tvmazeShowsFragmentRvShows.apply {
             val tvShowsLayoutManager = GridLayoutManager(context, TV_SHOWS_PER_ROW)
             layoutManager = tvShowsLayoutManager
             adapter = tvMazeShowAdapter
@@ -43,22 +47,28 @@ class TVMazeShowsFragment : Fragment() {
         }
     }
 
-    private fun configureTVMazeShowListener(binding: TvmazeShowsFragmentBinding) {
+    private fun configureTVMazeShowListener(binding: TvmazeShowsFragmentBinding) = with(binding) {
         viewModel.showsResult.observe(viewLifecycleOwner) {
             when (it) {
                 is StateData.Success -> {
-                    binding.isLoadingShows = false
+                    isLoadingShows = false
+                    thereIsError = false
                     tvMazeShowAdapter.addItems(it.data)
                 }
                 is StateData.Loading -> {
-                    binding.isLoadingShows = true
+                    thereIsError = false
+                    isLoadingShows = true
                 }
                 is StateData.Failure -> {
-                    binding.isLoadingShows = false
+                    tvmazeShowsFragmentEmRetry.setErrorMessage(it.message)
+                    thereIsError = true
+                    isLoadingShows = false
                 }
             }
         }
     }
+
+    private fun fetchTVShows() = viewModel.fetchShows()
 
     private companion object {
         const val TV_SHOWS_PER_ROW = 2

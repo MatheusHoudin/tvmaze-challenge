@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/homeShowsFragment"
+        android:title="@string/bottom_navigation_home"
+        android:icon="@drawable/ic_home"/>
+
+    <item android:id="@+id/searchShowsFragment"
+        android:title="@string/bottom_navigation_search"
+        android:icon="@drawable/ic_search"/>
+
+    <item android:id="@+id/favoriteShowsFragment"
+        android:title="@string/bottom_navigation_favorites"
+        android:icon="@drawable/ic_favorite"/>
+
+    <item android:id="@+id/peopleFragment"
+        android:title="@string/bottom_navigation_people"
+        android:icon="@drawable/ic_people"/>
+
+</menu>

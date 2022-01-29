@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.matheus.tvmazechallenge.features.tvmazeshows.entity.TVShowEntity
-import com.matheus.tvmazechallenge.features.tvmazeshows.repository.shows.TVMazeShowsRepository
+import com.matheus.tvmazechallenge.features.tvmazeshows.repository.TVMazeShowsRepository
 import com.matheus.tvmazechallenge.shared.base.StateData
 import kotlinx.coroutines.launch
 
@@ -14,7 +14,7 @@ class TVMazeShowsViewModel(
 ) : ViewModel() {
 
     private val tvMazeShows = mutableListOf<TVShowEntity>()
-    private var showsPage = INITIAL_PAGE
+    private var currentPage = INITIAL_PAGE
 
     private val _showsResult = MutableLiveData<StateData<List<TVShowEntity>>>()
     val showsResult: LiveData<StateData<List<TVShowEntity>>>
@@ -23,21 +23,21 @@ class TVMazeShowsViewModel(
     fun fetchShows() {
         viewModelScope.launch {
             _showsResult.value = StateData.Loading()
-            val tvShowsResponse = tvMazeShowsRepository.getShowsByPage(showsPage)
+            val showsStateData = tvMazeShowsRepository.getShowsByPage(currentPage)
 
-            if (tvShowsResponse is StateData.Success) {
-                updateTvShows(tvShowsResponse.data)
+            if (showsStateData is StateData.Success) {
+                updateTvShows(showsStateData.data)
                 return@launch
             }
 
-            _showsResult.value = tvShowsResponse
+            _showsResult.value = showsStateData
         }
     }
 
     private fun updateTvShows(tvShowEntities: List<TVShowEntity>) {
         tvMazeShows.addAll(tvShowEntities)
         _showsResult.value = StateData.Success(tvMazeShows)
-        showsPage++
+        currentPage++
     }
 
     private companion object {

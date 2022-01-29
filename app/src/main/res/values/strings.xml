@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">TVMazeChallenge</string>
+    <string name="bottom_navigation_home">Home</string>
+    <string name="bottom_navigation_search">Search</string>
+    <string name="bottom_navigation_favorites">Favorites</string>
+    <string name="bottom_navigation_people">People</string>
+
+    <string name="home_screen_label">TV Shows</string>
+    <string name="search_screen_label">Search Shows</string>
+    <string name="favorite_screen_label">Favorite Shows</string>
+    <string name="people_screen_label">Search People</string>
+
+    <string name="error_message_with_retry_button_name">Retry</string>
+
+    <string name="search_shows_search_hint">Search show</string>
 </resources>

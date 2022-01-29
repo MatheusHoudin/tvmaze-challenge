@@ -3,14 +3,32 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/app_navigation"
-    app:startDestination="@id/tv_shows">
+    app:startDestination="@id/homeShowsFragment">
 
     <fragment
-        android:id="@+id/tv_shows"
+        android:id="@+id/homeShowsFragment"
         android:name="com.matheus.tvmazechallenge.features.tvmazeshows.ui.TVMazeShowsFragment"
-        android:label="@string/app_name"
+        android:label="@string/home_screen_label"
         tools:layout="@layout/tvmaze_shows_fragment">
 
     </fragment>
+
+    <fragment
+        android:id="@+id/searchShowsFragment"
+        android:name="com.matheus.tvmazechallenge.features.search.ui.SearchShowsFragment"
+        android:label="@string/search_screen_label"
+        tools:layout="@layout/search_shows_fragment"/>
+
+    <fragment
+        android:id="@+id/favoriteShowsFragment"
+        android:name="com.matheus.tvmazechallenge.features.favorites.ui.FavoriteShowsFragment"
+        android:label="@string/favorite_screen_label"
+        tools:layout="@layout/favorite_shows_fragment"/>
+
+    <fragment
+        android:id="@+id/peopleFragment"
+        android:name="com.matheus.tvmazechallenge.features.people.ui.PeopleFragment"
+        android:label="@string/people_screen_label"
+        tools:layout="@layout/people_fragment"/>
 
 </navigation>

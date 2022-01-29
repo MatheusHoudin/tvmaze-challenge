@@ -1,6 +1,6 @@
 package com.matheus.tvmazechallenge.shared.model
 
 data class TVShowImageModel(
-    val medium: String,
-    val original: String
+    val medium: String?,
+    val original: String?
 )
