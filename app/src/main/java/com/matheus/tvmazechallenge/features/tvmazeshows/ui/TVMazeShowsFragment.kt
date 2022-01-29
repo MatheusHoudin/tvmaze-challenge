@@ -43,13 +43,14 @@ class TVMazeShowsFragment : Fragment() {
         viewModel.showsResult.observe(viewLifecycleOwner) {
             when (it) {
                 is StateData.Success -> {
+                    binding.isLoadingShows = false
                     tvMazeShowAdapter.addItems(it.data)
                 }
                 is StateData.Loading -> {
-
+                    binding.isLoadingShows = true
                 }
-                else -> {
-
+                is StateData.Failure -> {
+                    binding.isLoadingShows = false
                 }
             }
         }

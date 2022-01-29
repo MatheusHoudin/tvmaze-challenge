@@ -3,18 +3,37 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+        <variable
+            name="isLoadingShows"
+            type="boolean" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/background_color">
+        android:background="@color/primary_color">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/tvmaze_shows_fragment_rv_shows"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textAlignment="center"
+            isGone="@{isLoadingShows}"
             app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
             app:spanCount="2"/>
+
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:indicatorColor="@color/secondary_color"
+            android:indeterminateTint="@color/secondary_color"
+            android:indeterminate="true"
+            app:isGone="@{!isLoadingShows}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

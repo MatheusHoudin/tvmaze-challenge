@@ -15,8 +15,9 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/background_color"
-        android:layout_marginBottom="12dp">
+        android:background="@color/primary_color"
+        android:layout_marginBottom="12dp"
+        android:paddingHorizontal="4dp">
 
         <ImageView
             android:id="@+id/tvmaze_show_item_iv_poster"
