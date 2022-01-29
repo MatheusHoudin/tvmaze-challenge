@@ -3,10 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/ratingbar.xml" value="0.135" />
+        <entry key="app/src/main/res/drawable/ratingbar_empty.xml" value="0.135" />
+        <entry key="app/src/main/res/drawable/ratingbar_filled.xml" value="0.135" />
         <entry key="app/src/main/res/font/app_fonts.xml" value="0.27870370370370373" />
         <entry key="app/src/main/res/font/font_style.xml" value="0.27870370370370373" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2864583333333333" />
-        <entry key="app/src/main/res/layout/tvmaze_show_item_layout.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/tvmaze_show_item_layout.xml" value="0.22" />
         <entry key="app/src/main/res/layout/tvmaze_shows_fragment.xml" value="0.29030797101449274" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.311" />
       </map>

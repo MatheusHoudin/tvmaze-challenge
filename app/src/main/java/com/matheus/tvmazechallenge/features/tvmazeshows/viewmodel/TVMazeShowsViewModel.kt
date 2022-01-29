@@ -13,6 +13,7 @@ class TVMazeShowsViewModel(
     private val tvMazeShowsRepository: TVMazeShowsRepository
 ) : ViewModel() {
 
+    private val tvMazeShows = mutableListOf<TVShowEntity>()
     private var showsPage = INITIAL_PAGE
 
     private val _showsResult = MutableLiveData<StateData<List<TVShowEntity>>>()
@@ -22,8 +23,21 @@ class TVMazeShowsViewModel(
     fun fetchShows() {
         viewModelScope.launch {
             _showsResult.value = StateData.Loading()
-            _showsResult.value = tvMazeShowsRepository.getShowsByPage(showsPage)
+            val tvShowsResponse = tvMazeShowsRepository.getShowsByPage(showsPage)
+
+            if (tvShowsResponse is StateData.Success) {
+                updateTvShows(tvShowsResponse.data)
+                return@launch
+            }
+
+            _showsResult.value = tvShowsResponse
         }
+    }
+
+    private fun updateTvShows(tvShowEntities: List<TVShowEntity>) {
+        tvMazeShows.addAll(tvShowEntities)
+        _showsResult.value = StateData.Success(tvMazeShows)
+        showsPage++
     }
 
     private companion object {

@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.matheus.tvmazechallenge.databinding.TvmazeShowsFragmentBinding
 import com.matheus.tvmazechallenge.features.tvmazeshows.viewmodel.TVMazeShowsViewModel
 import com.matheus.tvmazechallenge.shared.base.StateData
+import com.matheus.tvmazechallenge.shared.util.EndOfScrollListener
 import org.koin.android.ext.android.bind
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -36,6 +37,9 @@ class TVMazeShowsFragment : Fragment() {
             val tvShowsLayoutManager = GridLayoutManager(context, TV_SHOWS_PER_ROW)
             layoutManager = tvShowsLayoutManager
             adapter = tvMazeShowAdapter
+            addOnScrollListener(EndOfScrollListener(tvShowsLayoutManager) {
+                fetchTVShows()
+            })
         }
     }
 
