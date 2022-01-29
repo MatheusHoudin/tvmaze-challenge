@@ -6,5 +6,5 @@ import com.matheus.tvmazechallenge.shared.model.TVShowModel
 fun TVShowModel.toEntity() = TVShowEntity(
     id = this.id,
     name = this.name,
-    poster = this.image.original
+    poster = this.image.medium
 )
