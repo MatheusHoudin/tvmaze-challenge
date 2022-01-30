@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.matheus.tvmazechallenge.databinding.SearchShowsFragmentBinding
 import com.matheus.tvmazechallenge.features.search.viewmodel.SearchTVShowsViewModel
@@ -49,7 +50,13 @@ class SearchShowsFragment : Fragment() {
         }
         searchShowsFragmentRvShows.apply {
             layoutManager = GridLayoutManager(context, TV_SHOWS_PER_ROW)
-            adapter = tvMazeShowAdapter
+            adapter = tvMazeShowAdapter.apply {
+                onClickListener = { tvShow ->
+                    SearchShowsFragmentDirections.actionSearchShowsToTvShowDetails(tvShow).let {
+                        findNavController().navigate(it)
+                    }
+                }
+            }
         }
     }
 
