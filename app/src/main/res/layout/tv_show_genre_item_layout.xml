@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/tv_show_genre_background">
+
+        <TextView
+            android:id="@+id/tv_show_genre_tv_genre"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:fontFamily="@font/firasans_regular"
+            android:paddingVertical="4dp"
+            android:paddingHorizontal="12dp"
+            android:gravity="center"
+            tools:text="TV Show genre"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

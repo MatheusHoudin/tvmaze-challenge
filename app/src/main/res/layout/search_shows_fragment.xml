@@ -20,7 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingTop="12dp"
-        android:background="@color/tvmaze_black">
+        android:background="@color/tvmaze_main_color">
 
         <EditText
             android:id="@+id/search_shows_et_search"
@@ -77,8 +77,8 @@
             <com.google.android.material.progressindicator.CircularProgressIndicator
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                app:indicatorColor="@color/tvmaze_yellow"
-                android:indeterminateTint="@color/tvmaze_yellow"
+                app:indicatorColor="@color/tvmaze_secondary_color"
+                android:indeterminateTint="@color/tvmaze_secondary_color"
                 android:indeterminate="true"
                 app:isGone="@{!isLoadingShows}"
                 app:layout_constraintLeft_toLeftOf="parent"

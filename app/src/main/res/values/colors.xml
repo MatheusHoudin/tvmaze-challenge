@@ -7,7 +7,8 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="tvmaze_black">#111114</color>
-    <color name="tvmaze_yellow">#FFF49300</color>
+    <color name="tvmaze_main_color">#13133b</color>
+    <color name="tvmaze_light_main_color">#1a1a5c</color>
+    <color name="tvmaze_secondary_color">#FFF49300</color>
     <color name="grey">#FFb5b5b5</color>
 </resources>
