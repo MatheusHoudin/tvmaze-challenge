@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../../layout/custom_preview.xml" value="0.3314814814814815" />
+        <entry key="../../../.gradle/caches/transforms-3/b9537ce0c90d0b19e9dd20bb78a129f2/transformed/appcompat-1.4.1/res/layout/support_simple_spinner_dropdown_item.xml" value="0.33125" />
         <entry key="app/src/main/res/drawable/bottom_navigation.xml" value="0.251" />
         <entry key="app/src/main/res/drawable/ic_baseline_favorite_24.xml" value="0.251" />
         <entry key="app/src/main/res/drawable/ic_search.xml" value="0.2125" />
@@ -14,6 +15,8 @@
         <entry key="app/src/main/res/drawable/tv_show_episode_schedule_disabled_layout.xml" value="0.1945" />
         <entry key="app/src/main/res/drawable/tv_show_episode_schedule_enabled_layout.xml" value="0.1945" />
         <entry key="app/src/main/res/drawable/tv_show_genre_background.xml" value="0.1435" />
+        <entry key="app/src/main/res/drawable/tv_show_season_selector.xml" value="0.2875" />
+        <entry key="app/src/main/res/drawable/tv_show_seasons_spinner_background.xml" value="0.2875" />
         <entry key="app/src/main/res/font/app_fonts.xml" value="0.27870370370370373" />
         <entry key="app/src/main/res/font/font_style.xml" value="0.27870370370370373" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2864583333333333" />
@@ -22,12 +25,14 @@
         <entry key="app/src/main/res/layout/people_fragment.xml" value="0.3392210144927536" />
         <entry key="app/src/main/res/layout/search_shows_fragment.xml" value="0.22" />
         <entry key="app/src/main/res/layout/search_shows_fragment_layout.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/tv_show_details_fragment.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/tv_show_details_fragment.xml" value="0.4299332697807436" />
         <entry key="app/src/main/res/layout/tv_show_episode_schedule_item_layout.xml" value="0.2966485507246377" />
         <entry key="app/src/main/res/layout/tv_show_genre_item_layout.xml" value="0.33" />
         <entry key="app/src/main/res/layout/tv_show_genre_layout.xml" value="0.32864583333333336" />
         <entry key="app/src/main/res/layout/tv_show_genres_list_layout.xml" value="0.32864583333333336" />
         <entry key="app/src/main/res/layout/tv_show_item_layout.xml" value="0.3572916666666667" />
+        <entry key="app/src/main/res/layout/tv_show_season_selected_layout.xml" value="0.33125" />
+        <entry key="app/src/main/res/layout/tv_show_season_unselected_layout.xml" value="0.33125" />
         <entry key="app/src/main/res/layout/tv_shows_fragment.xml" value="0.3572916666666667" />
         <entry key="app/src/main/res/layout/tvmaze_show_item_layout.xml" value="0.22" />
         <entry key="app/src/main/res/layout/tvmaze_shows_fragment.xml" value="0.1" />

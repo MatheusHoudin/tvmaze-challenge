@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.matheus.tvmazechallenge.features.tvshowdetails.entity.TVShowEpisodeEntity
 import com.matheus.tvmazechallenge.features.tvshowdetails.entity.TVShowSeasonEpisodesEntity
 import com.matheus.tvmazechallenge.features.tvshowdetails.repository.TVShowDetailsRepository
 import com.matheus.tvmazechallenge.shared.base.StateData
@@ -13,10 +14,16 @@ class TVShowDetailsViewModel(
     private val tvShowDetailsRepository: TVShowDetailsRepository
 ) : ViewModel() {
 
+    private var selectedSeasonIndex = INITIAL_SEASON_INDEX
+
     private val _tvShowDetailsResult =
         MutableLiveData<StateData<List<TVShowSeasonEpisodesEntity>>>()
     val tvShowDetailsResult: LiveData<StateData<List<TVShowSeasonEpisodesEntity>>>
         get() = _tvShowDetailsResult
+
+    private val _selectedEpisodes = MutableLiveData<List<TVShowEpisodeEntity>>()
+    val selectedEpisodes: LiveData<List<TVShowEpisodeEntity>>
+        get() = _selectedEpisodes
 
     fun fetchTVShowEpisodes(tvShowId: Int) {
         viewModelScope.launch {
@@ -24,6 +31,26 @@ class TVShowDetailsViewModel(
             val tvShowDetailsStateData = tvShowDetailsRepository.getShowEpisodes(tvShowId)
 
             _tvShowDetailsResult.value = tvShowDetailsStateData
+
+            setSelectedSeasonIndex(INITIAL_SEASON_INDEX)
         }
+    }
+
+    fun setSelectedSeason(season: String) {
+        selectedSeasonIndex = season.removePrefix(SEASON_PREFIX).trim().toInt() - 1
+        setSelectedSeasonIndex(selectedSeasonIndex)
+    }
+
+    private fun setSelectedSeasonIndex(seasonIndex: Int) {
+        selectedSeasonIndex = seasonIndex
+        if (_tvShowDetailsResult.value is StateData.Success) {
+            _selectedEpisodes.value =
+                (_tvShowDetailsResult.value as StateData.Success).data[selectedSeasonIndex].episodes
+        }
+    }
+
+    private companion object {
+        const val SEASON_PREFIX = "Season "
+        const val INITIAL_SEASON_INDEX = 0
     }
 }

@@ -4,12 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.matheus.tvmazechallenge.R
 import com.matheus.tvmazechallenge.databinding.TvShowDetailsFragmentBinding
 import com.matheus.tvmazechallenge.features.tvshowdetails.viewmodel.TVShowDetailsViewModel
 import com.matheus.tvmazechallenge.shared.base.StateData
+import com.matheus.tvmazechallenge.shared.extensions.toSeasonList
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class TVShowDetailsFragment : Fragment() {
@@ -44,6 +48,15 @@ class TVShowDetailsFragment : Fragment() {
                 setEpisodeScheduleItems(args.tvShow.schedule.days)
             }
         }
+        tvShowDetailsSpSeasons.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                val season = parent?.getItemAtPosition(position).toString()
+                viewModel.setSelectedSeason(season)
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
+
+        }
     }
 
     private fun configureTVShowEpisodesListener(binding: TvShowDetailsFragmentBinding) =
@@ -52,7 +65,7 @@ class TVShowDetailsFragment : Fragment() {
                 when (it) {
                     is StateData.Success -> {
                         isLoadingEpisodes = false
-
+                        fillSeasonsSpinner(binding, it.data.toSeasonList())
                     }
                     is StateData.Loading -> {
                         isLoadingEpisodes = true
@@ -62,7 +75,21 @@ class TVShowDetailsFragment : Fragment() {
                     }
                 }
             }
+            viewModel.selectedEpisodes.observe(viewLifecycleOwner) {
+                it.first()
+            }
         }
+
+    private fun fillSeasonsSpinner(binding: TvShowDetailsFragmentBinding, seasons: List<String>) {
+        binding.tvShowDetailsSpSeasons.adapter =
+            ArrayAdapter(
+                requireContext(),
+                R.layout.tv_show_season_selected_layout,
+                seasons
+            ).apply {
+                setDropDownViewResource(R.layout.tv_show_season_unselected_layout)
+            }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
