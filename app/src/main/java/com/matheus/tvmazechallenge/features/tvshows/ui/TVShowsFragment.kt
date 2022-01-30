@@ -1,29 +1,30 @@
-package com.matheus.tvmazechallenge.features.tvmazeshows.ui
+package com.matheus.tvmazechallenge.features.tvshows.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import com.matheus.tvmazechallenge.databinding.TvmazeShowsFragmentBinding
-import com.matheus.tvmazechallenge.features.tvmazeshows.viewmodel.TVMazeShowsViewModel
-import com.matheus.tvmazechallenge.shared.adapter.TVMazeShowAdapter
+import com.matheus.tvmazechallenge.databinding.TvShowsFragmentBinding
+import com.matheus.tvmazechallenge.features.tvshows.viewmodel.TVShowsViewModel
+import com.matheus.tvmazechallenge.shared.adapter.TVShowAdapter
 import com.matheus.tvmazechallenge.shared.base.StateData
 import com.matheus.tvmazechallenge.shared.util.EndOfScrollListener
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class TVMazeShowsFragment : Fragment() {
+class TVShowsFragment : Fragment() {
 
-    private val tvMazeShowAdapter = TVMazeShowAdapter()
-    private val viewModel: TVMazeShowsViewModel by viewModel()
+    private val tvMazeShowAdapter = TVShowAdapter()
+    private val viewModel: TVShowsViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val binding = TvmazeShowsFragmentBinding.inflate(inflater, container, false)
+        val binding = TvShowsFragmentBinding.inflate(inflater, container, false)
         configureBindings(binding)
         configureTVMazeShowListener(binding)
         return binding.root
@@ -34,20 +35,26 @@ class TVMazeShowsFragment : Fragment() {
         fetchTVShows()
     }
 
-    private fun configureBindings(binding: TvmazeShowsFragmentBinding) = with(binding) {
+    private fun configureBindings(binding: TvShowsFragmentBinding) = with(binding) {
         thereIsError = false
-        tvmazeShowsFragmentEmRetry.setOnRetryClickListener { fetchTVShows() }
-        tvmazeShowsFragmentRvShows.apply {
+        tvShowsFragmentEmRetry.setOnRetryClickListener { fetchTVShows() }
+        tvShowsFragmentRvShows.apply {
             val tvShowsLayoutManager = GridLayoutManager(context, TV_SHOWS_PER_ROW)
             layoutManager = tvShowsLayoutManager
-            adapter = tvMazeShowAdapter
+            adapter = tvMazeShowAdapter.apply {
+                onClickListener = { tvShow ->
+                    TVShowsFragmentDirections.actionTvShowToTvShowDetails(tvShow).let {
+                        findNavController().navigate(it)
+                    }
+                }
+            }
             addOnScrollListener(EndOfScrollListener(tvShowsLayoutManager) {
                 fetchTVShows()
             })
         }
     }
 
-    private fun configureTVMazeShowListener(binding: TvmazeShowsFragmentBinding) = with(binding) {
+    private fun configureTVMazeShowListener(binding: TvShowsFragmentBinding) = with(binding) {
         viewModel.showsResult.observe(viewLifecycleOwner) {
             when (it) {
                 is StateData.Success -> {
@@ -60,7 +67,7 @@ class TVMazeShowsFragment : Fragment() {
                     isLoadingShows = true
                 }
                 is StateData.Failure -> {
-                    tvmazeShowsFragmentEmRetry.setErrorMessage(it.message)
+                    tvShowsFragmentEmRetry.setErrorMessage(it.message)
                     thereIsError = true
                     isLoadingShows = false
                 }

@@ -9,14 +9,14 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.matheus.tvmazechallenge.databinding.SearchShowsFragmentBinding
 import com.matheus.tvmazechallenge.features.search.viewmodel.SearchTVShowsViewModel
-import com.matheus.tvmazechallenge.shared.adapter.TVMazeShowAdapter
+import com.matheus.tvmazechallenge.shared.adapter.TVShowAdapter
 import com.matheus.tvmazechallenge.shared.base.StateData
 import com.matheus.tvmazechallenge.shared.error.Failure
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SearchShowsFragment : Fragment() {
 
-    private val tvMazeShowAdapter = TVMazeShowAdapter()
+    private val tvMazeShowAdapter = TVShowAdapter()
     private val viewModel: SearchTVShowsViewModel by viewModel()
 
     override fun onCreateView(

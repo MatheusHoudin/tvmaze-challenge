@@ -1,7 +1,7 @@
-package com.matheus.tvmazechallenge.features.tvmazeshows.repository
+package com.matheus.tvmazechallenge.features.tvshows.repository
 
-import com.matheus.tvmazechallenge.features.tvmazeshows.datasource.TVMazeShowsDatasource
-import com.matheus.tvmazechallenge.features.tvmazeshows.entity.TVShowEntity
+import com.matheus.tvmazechallenge.features.tvshows.datasource.TVShowsDatasource
+import com.matheus.tvmazechallenge.features.tvshows.entity.TVShowEntity
 import com.matheus.tvmazechallenge.shared.base.StateData
 import com.matheus.tvmazechallenge.shared.error.Failure
 import com.matheus.tvmazechallenge.shared.extensions.toEntity
@@ -11,14 +11,14 @@ import java.io.IOException
 import java.lang.Exception
 import java.net.SocketException
 
-class TVMazeShowRepositoryImpl(
-    private val tvMazeShowsDatasource: TVMazeShowsDatasource
-) : TVMazeShowsRepository {
+class TVShowRepositoryImpl(
+    private val tvShowsDatasource: TVShowsDatasource
+) : TVShowsRepository {
 
     override suspend fun getShowsByPage(page: Int): StateData<List<TVShowEntity>> =
         withContext(Dispatchers.IO) {
             try {
-                val showsEntities = tvMazeShowsDatasource.getShowsByPage(page).map { it.toEntity() }
+                val showsEntities = tvShowsDatasource.getShowsByPage(page).map { it.toEntity() }
                 StateData.Success(showsEntities)
             } catch (e: Exception) {
                 when (e) {

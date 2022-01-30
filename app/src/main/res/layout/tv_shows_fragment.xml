@@ -19,7 +19,7 @@
         android:background="@color/tvmaze_black">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/tvmaze_shows_fragment_rv_shows"
+            android:id="@+id/tv_shows_fragment_rv_shows"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textAlignment="center"
@@ -40,7 +40,7 @@
             app:layout_constraintBottom_toBottomOf="parent"/>
 
         <com.matheus.tvmazechallenge.shared.components.ErrorMessageWithRetry
-            android:id="@+id/tvmaze_shows_fragment_em_retry"
+            android:id="@+id/tv_shows_fragment_em_retry"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             isGone="@{!thereIsError}"

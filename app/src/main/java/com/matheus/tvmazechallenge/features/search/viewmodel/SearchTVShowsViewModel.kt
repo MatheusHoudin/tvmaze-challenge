@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.matheus.tvmazechallenge.features.search.repository.SearchTVShowRepository
-import com.matheus.tvmazechallenge.features.tvmazeshows.entity.TVShowEntity
+import com.matheus.tvmazechallenge.features.tvshows.entity.TVShowEntity
 import com.matheus.tvmazechallenge.shared.base.StateData
 import com.matheus.tvmazechallenge.shared.error.Failure
 import kotlinx.coroutines.launch

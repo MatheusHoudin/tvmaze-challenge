@@ -7,10 +7,16 @@
 
     <fragment
         android:id="@+id/homeShowsFragment"
-        android:name="com.matheus.tvmazechallenge.features.tvmazeshows.ui.TVMazeShowsFragment"
+        android:name="com.matheus.tvmazechallenge.features.tvshows.ui.TVShowsFragment"
         android:label="@string/home_screen_label"
-        tools:layout="@layout/tvmaze_shows_fragment">
-
+        tools:layout="@layout/tv_shows_fragment">
+        <action
+            android:id="@+id/action_tv_show_to_tv_show_details"
+            app:destination="@id/tvShowDetailsFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
 
     <fragment
@@ -30,5 +36,15 @@
         android:name="com.matheus.tvmazechallenge.features.people.ui.PeopleFragment"
         android:label="@string/people_screen_label"
         tools:layout="@layout/people_fragment"/>
+
+    <fragment
+        android:id="@+id/tvShowDetailsFragment"
+        android:name="com.matheus.tvmazechallenge.features.tvshowdetails.ui.TVShowDetailsFragment"
+        android:label="TVShowDetailsFragment"
+        tools:layout="@layout/tv_show_details_fragment">
+        <argument
+            android:name="tvShow"
+            app:argType="com.matheus.tvmazechallenge.features.tvshows.entity.TVShowEntity"/>
+    </fragment>
 
 </navigation>

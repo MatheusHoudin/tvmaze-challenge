@@ -1,7 +1,7 @@
 package com.matheus.tvmazechallenge.features.search.repository
 
 import com.matheus.tvmazechallenge.features.search.datasource.SearchTVShowDatasource
-import com.matheus.tvmazechallenge.features.tvmazeshows.entity.TVShowEntity
+import com.matheus.tvmazechallenge.features.tvshows.entity.TVShowEntity
 import com.matheus.tvmazechallenge.shared.base.StateData
 import com.matheus.tvmazechallenge.shared.error.Failure
 import com.matheus.tvmazechallenge.shared.extensions.toEntity

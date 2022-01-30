@@ -1,16 +1,16 @@
-package com.matheus.tvmazechallenge.features.tvmazeshows.viewmodel
+package com.matheus.tvmazechallenge.features.tvshows.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.matheus.tvmazechallenge.features.tvmazeshows.entity.TVShowEntity
-import com.matheus.tvmazechallenge.features.tvmazeshows.repository.TVMazeShowsRepository
+import com.matheus.tvmazechallenge.features.tvshows.entity.TVShowEntity
+import com.matheus.tvmazechallenge.features.tvshows.repository.TVShowsRepository
 import com.matheus.tvmazechallenge.shared.base.StateData
 import kotlinx.coroutines.launch
 
-class TVMazeShowsViewModel(
-    private val tvMazeShowsRepository: TVMazeShowsRepository
+class TVShowsViewModel(
+    private val tvShowsRepository: TVShowsRepository
 ) : ViewModel() {
 
     private val tvMazeShows = mutableListOf<TVShowEntity>()
@@ -23,7 +23,7 @@ class TVMazeShowsViewModel(
     fun fetchShows() {
         viewModelScope.launch {
             _showsResult.value = StateData.Loading()
-            val showsStateData = tvMazeShowsRepository.getShowsByPage(currentPage)
+            val showsStateData = tvShowsRepository.getShowsByPage(currentPage)
 
             if (showsStateData is StateData.Success) {
                 updateTvShows(showsStateData.data)

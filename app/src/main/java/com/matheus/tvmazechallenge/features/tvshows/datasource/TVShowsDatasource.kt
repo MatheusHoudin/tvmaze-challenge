@@ -1,7 +1,7 @@
-package com.matheus.tvmazechallenge.features.tvmazeshows.datasource
+package com.matheus.tvmazechallenge.features.tvshows.datasource
 
 import com.matheus.tvmazechallenge.shared.model.TVShowModel
 
-interface TVMazeShowsDatasource {
+interface TVShowsDatasource {
     suspend fun getShowsByPage(page: Int): List<TVShowModel>
 }

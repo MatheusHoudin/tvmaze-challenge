@@ -2,13 +2,16 @@ package com.matheus.tvmazechallenge.shared.di
 
 import com.matheus.tvmazechallenge.features.search.datasource.SearchTVShowDatasource
 import com.matheus.tvmazechallenge.features.search.datasource.SearchTVShowDatasourceImpl
-import com.matheus.tvmazechallenge.features.tvmazeshows.datasource.TVMazeShowsDatasource
-import com.matheus.tvmazechallenge.features.tvmazeshows.datasource.TVMazeShowsDatasourceImpl
+import com.matheus.tvmazechallenge.features.tvshowdetails.datasource.TVShowDetailsDatasource
+import com.matheus.tvmazechallenge.features.tvshowdetails.datasource.TVShowDetailsDatasourceImpl
+import com.matheus.tvmazechallenge.features.tvshows.datasource.TVShowsDatasource
+import com.matheus.tvmazechallenge.features.tvshows.datasource.TVShowsDatasourceImpl
 import org.koin.dsl.module
 
 object DatasourceModule {
     val datasourceModule = module {
-        single<TVMazeShowsDatasource> { TVMazeShowsDatasourceImpl(get()) }
+        single<TVShowsDatasource> { TVShowsDatasourceImpl(get()) }
         single<SearchTVShowDatasource> { SearchTVShowDatasourceImpl(get()) }
+        single<TVShowDetailsDatasource> { TVShowDetailsDatasourceImpl(get()) }
     }
 }
