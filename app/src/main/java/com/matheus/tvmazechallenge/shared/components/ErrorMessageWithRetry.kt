@@ -2,6 +2,7 @@ package com.matheus.tvmazechallenge.shared.components
 
 import android.content.Context
 import android.util.AttributeSet
+import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.matheus.tvmazechallenge.R
 import kotlinx.android.synthetic.main.error_message_with_retry_layout.view.*
@@ -21,5 +22,13 @@ class ErrorMessageWithRetry(context: Context, attrs: AttributeSet) :
         error_message_with_retry_bt_retry.setOnClickListener {
             retryClickAction()
         }
+    }
+
+    fun hideRetryButton() {
+        error_message_with_retry_bt_retry.visibility = View.GONE
+    }
+
+    fun showRetryButton() {
+        error_message_with_retry_bt_retry.visibility = View.VISIBLE
     }
 }

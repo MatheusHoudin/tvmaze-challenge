@@ -11,6 +11,9 @@
         <variable
             name="thereIsError"
             type="boolean"/>
+        <variable
+            name="thereAreNoShows"
+            type="boolean"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -35,41 +38,66 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/search_shows_fragment_rv_shows"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:textAlignment="center"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/search_shows_et_search"
-            app:layout_constraintBottom_toBottomOf="parent"
-            isGone="@{isLoadingShows || thereIsError}"
-            app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
-            app:spanCount="2"/>
+            app:layout_constraintBottom_toBottomOf="parent">
 
-        <com.google.android.material.progressindicator.CircularProgressIndicator
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            app:indicatorColor="@color/tvmaze_yellow"
-            android:indeterminateTint="@color/tvmaze_yellow"
-            android:indeterminate="true"
-            app:isGone="@{!isLoadingShows}"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            <TextView
+                android:id="@+id/search_shows_tv_start_searching"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/search_shows_start_searching"
+                android:fontFamily="@font/firasans_semibold"
+                android:textColor="@color/white"
+                isGone="@{!thereAreNoShows}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
 
-        <com.matheus.tvmazechallenge.shared.components.ErrorMessageWithRetry
-            android:id="@+id/search_shows_fragment_em_retry"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            isGone="@{!thereIsError}"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            tools:visibility="gone"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/search_shows_fragment_rv_shows"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textAlignment="center"
+                android:layout_marginBottom="60dp"
+                android:layout_marginTop="12dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                isGone="@{isLoadingShows || thereIsError}"
+                app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+                app:spanCount="2"/>
+
+            <com.google.android.material.progressindicator.CircularProgressIndicator
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                app:indicatorColor="@color/tvmaze_yellow"
+                android:indeterminateTint="@color/tvmaze_yellow"
+                android:indeterminate="true"
+                app:isGone="@{!isLoadingShows}"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <com.matheus.tvmazechallenge.shared.components.ErrorMessageWithRetry
+                android:id="@+id/search_shows_fragment_em_retry"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                isGone="@{!thereIsError}"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:visibility="gone"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

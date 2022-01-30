@@ -24,7 +24,7 @@ class TVMazeShowsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val binding = TvmazeShowsFragmentBinding.inflate(inflater, container, false)
-        configureBinding(binding)
+        configureBindings(binding)
         configureTVMazeShowListener(binding)
         return binding.root
     }
@@ -34,7 +34,7 @@ class TVMazeShowsFragment : Fragment() {
         fetchTVShows()
     }
 
-    private fun configureBinding(binding: TvmazeShowsFragmentBinding) = with(binding) {
+    private fun configureBindings(binding: TvmazeShowsFragmentBinding) = with(binding) {
         thereIsError = false
         tvmazeShowsFragmentEmRetry.setOnRetryClickListener { fetchTVShows() }
         tvmazeShowsFragmentRvShows.apply {

@@ -13,4 +13,5 @@
     <string name="error_message_with_retry_button_name">Retry</string>
 
     <string name="search_shows_search_hint">Search show</string>
+    <string name="search_shows_start_searching">Are you looking for a TV Show? Start searching here!</string>
 </resources>

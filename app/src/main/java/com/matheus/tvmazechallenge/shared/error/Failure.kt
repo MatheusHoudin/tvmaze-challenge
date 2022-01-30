@@ -8,5 +8,5 @@ object Failure {
     val unexpectedFailure =
         StateData.Failure(message = "Sorry, an unexpected error has occurred, please try again!")
     val notFoundShowsFailure =
-        StateData.Failure(message = "The search you made did not found any show, try fixing your search!")
+        StateData.Failure(message = "The search you made did not found any TV Show, try fixing your search!")
 }
