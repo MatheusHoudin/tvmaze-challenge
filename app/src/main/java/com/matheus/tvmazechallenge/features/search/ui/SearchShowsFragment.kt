@@ -41,6 +41,7 @@ class SearchShowsFragment : Fragment() {
 
     private fun configureBindings(binding: SearchShowsFragmentBinding) = with(binding) {
         thereIsError = false
+        shouldHideInstructions = false
         with(searchShowsFragmentEmRetry) {
             setOnRetryClickListener {
                 viewModel.searchShows(searchShowsEtSearch.text.toString())
@@ -54,6 +55,7 @@ class SearchShowsFragment : Fragment() {
 
     private fun configureSearchShowsListener(binding: SearchShowsFragmentBinding) = with(binding) {
         viewModel.showsResult.observe(viewLifecycleOwner) {
+            shouldHideInstructions = true
             searchShowsFragmentEmRetry.hideRetryButton()
             searchShowsTvStartSearching.visibility = View.GONE
             when (it) {

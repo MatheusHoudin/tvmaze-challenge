@@ -12,7 +12,7 @@
             name="thereIsError"
             type="boolean"/>
         <variable
-            name="thereAreNoShows"
+            name="shouldHideInstructions"
             type="boolean"/>
     </data>
 
@@ -53,7 +53,7 @@
                 android:text="@string/search_shows_start_searching"
                 android:fontFamily="@font/firasans_semibold"
                 android:textColor="@color/white"
-                isGone="@{!thereAreNoShows}"
+                isGone="@{shouldHideInstructions}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
