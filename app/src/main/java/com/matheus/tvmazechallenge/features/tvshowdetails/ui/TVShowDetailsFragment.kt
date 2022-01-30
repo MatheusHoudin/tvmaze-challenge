@@ -14,6 +14,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class TVShowDetailsFragment : Fragment() {
 
+    private val tvShowEpisodeScheduleAdapter = TVShowEpisodeScheduleAdapter()
     private val tvShowGenreAdapter = TVShowGenreAdapter()
     private val viewModel: TVShowDetailsViewModel by viewModel()
     private val args: TVShowDetailsFragmentArgs by navArgs()
@@ -35,6 +36,12 @@ class TVShowDetailsFragment : Fragment() {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             adapter = tvShowGenreAdapter.apply {
                 addItems(args.tvShow.genres)
+            }
+        }
+        tvShowDetailsRvEpisodesSchedule.apply {
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            adapter = tvShowEpisodeScheduleAdapter.apply {
+                setEpisodeScheduleItems(args.tvShow.schedule.days)
             }
         }
     }

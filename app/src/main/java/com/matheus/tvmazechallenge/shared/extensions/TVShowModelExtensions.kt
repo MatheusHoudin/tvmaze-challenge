@@ -14,5 +14,5 @@ fun TVShowModel.toEntity() = TVShowEntity(
         days = this.schedule.days
     ),
     genres = this.genres,
-    summary = this.summary
+    summary = this.summary.orEmpty()
 )

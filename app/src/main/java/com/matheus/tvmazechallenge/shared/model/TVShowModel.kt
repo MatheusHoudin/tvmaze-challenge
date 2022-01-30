@@ -6,5 +6,5 @@ data class TVShowModel(
     val image: TVShowImageModel?,
     val schedule: TVShowScheduleModel,
     val genres: List<String>,
-    val summary: String
+    val summary: String?
 )

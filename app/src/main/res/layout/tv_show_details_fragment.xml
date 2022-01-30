@@ -25,7 +25,6 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingHorizontal="20dp"
                 isGone="@{isLoadingEpisodes}">
 
                 <ImageView
@@ -46,6 +45,7 @@
                     android:textSize="20sp"
                     android:text="@{tvShowDetails.name}"
                     android:layout_marginTop="12dp"
+                    android:paddingHorizontal="20dp"
                     android:textColor="@color/white"
                     android:fontFamily="@font/firasans_bold"
                     app:layout_constraintLeft_toLeftOf="parent"
@@ -58,10 +58,51 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:layout_marginTop="6dp"
+                    android:paddingHorizontal="20dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_shows_details_tv_name"
-                    tools:listitem="@layout/tv_show_genre_item_layout"/>
+                    tools:listitem="@layout/tv_show_genre_item_layout"
+                    tools:itemCount="2"/>
+
+                <TextView
+                    android:id="@+id/tv_show_details_tv_episodes_schedule"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="6dp"
+                    android:text="@string/tv_show_details_tv_episodes_schedule_title"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/firasans_semibold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_show_details_rv_genres"/>
+
+                <TextView
+                    android:id="@+id/tv_show_details_tv_episodes_schedule_day"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/firasans_regular"
+                    android:text="@{@string/tv_show_details_tv_episodes_schedule_time(tvShowDetails.schedule.time)}"
+                    android:textColor="@color/tvmaze_secondary_color"
+                    android:textSize="12sp"
+                    android:layout_marginEnd="20dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_show_details_tv_episodes_schedule"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tv_show_details_tv_episodes_schedule"
+                    tools:text="New episodes at 22:00" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/tv_show_details_rv_episodes_schedule"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:textAlignment="center"
+                    android:orientation="horizontal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_show_details_tv_episodes_schedule_day"
+                    tools:listitem="@layout/tv_show_episode_schedule_item_layout"
+                    tools:itemCount="2"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

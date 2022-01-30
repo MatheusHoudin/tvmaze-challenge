@@ -14,4 +14,7 @@
 
     <string name="search_shows_search_hint">Search TV Show</string>
     <string name="search_shows_start_searching">Are you looking for a TV Show? Start searching here!</string>
+
+    <string name="tv_show_details_tv_episodes_schedule_title">Episodes schedule</string>
+    <string name="tv_show_details_tv_episodes_schedule_time">New episodes at %s</string>
 </resources>
