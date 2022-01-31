@@ -36,12 +36,7 @@ class TVShowDetailsViewModel(
         }
     }
 
-    fun setSelectedSeason(season: String) {
-        selectedSeasonIndex = season.removePrefix(SEASON_PREFIX).trim().toInt() - 1
-        setSelectedSeasonIndex(selectedSeasonIndex)
-    }
-
-    private fun setSelectedSeasonIndex(seasonIndex: Int) {
+    fun setSelectedSeasonIndex(seasonIndex: Int) {
         selectedSeasonIndex = seasonIndex
         if (_tvShowDetailsResult.value is StateData.Success) {
             _selectedEpisodes.value =

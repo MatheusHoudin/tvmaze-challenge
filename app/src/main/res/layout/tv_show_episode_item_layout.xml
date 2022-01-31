@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="tvShowEpisode"
+            type="com.matheus.tvmazechallenge.features.tvshowdetails.entity.TVShowEpisodeEntity" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:background="@color/tvmaze_main_color"
+        android:paddingBottom="18dp">
+
+        <LinearLayout
+            android:id="@+id/tv_show_episode_ll_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/tv_show_episode_iv_image"
+                imageFromUrl="@{tvShowEpisode.image}"
+                android:layout_width="180dp"
+                android:layout_height="120dp"/>
+
+            <TextView
+                android:id="@+id/tv_show_episode_tv_name"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:maxLines="4"
+                android:ellipsize="end"
+                android:fontFamily="@font/firasans_semibold"
+                android:text="@{@string/tv_show_details_episode_tv_episode_name(tvShowEpisode.number, tvShowEpisode.name)}"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                tools:text="Episode namefdfsfdsfsdfsdfsfsfsdfsdfsdfdsfsdfdsfdfsdfdsdfs" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/firasans_regular"
+            android:justificationMode="inter_word"
+            android:textAlignment="center"
+            htmlText="@{tvShowEpisode.summary}"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_show_episode_ll_header"
+            tools:text="John Reese is a former CIA operative living off the grid in NYC. When Reese is hauled into NYPD's 8th Precinct for a skirmish on the subway, he's bailed out by a man he doesn't know: Mr. Finch, a mysterious billionaire. Finch offers Reese a choice: stay on the streets and drink himself to death -- or join him in his mission to stop violent crimes before they happen. Finch has access to a secret source of information, one that identifies people who are about to be involved in violent crimes. There's just one catch: he doesn't know if these people will be the victims or the perpetrators. Skeptical but intrigued, Reese agrees to help. Together, Reese and Finch work to discover what danger is about to befall Assistant District Attorney Diane Hansen. Their actions garner the unwanted attention of NYPD homicide detective Carter -- a dedicated veteran cop who's not fond of vigilantes -- and Detective Fusco, a precinct detective who stands in the way of Reese's plans" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

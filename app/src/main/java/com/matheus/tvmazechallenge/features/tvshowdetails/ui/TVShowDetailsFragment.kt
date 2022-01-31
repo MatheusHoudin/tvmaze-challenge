@@ -18,6 +18,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class TVShowDetailsFragment : Fragment() {
 
+    private val tvShowEpisodesAdapter = TVShowEpisodeAdapter()
     private val tvShowEpisodeScheduleAdapter = TVShowEpisodeScheduleAdapter()
     private val tvShowGenreAdapter = TVShowGenreAdapter()
     private val viewModel: TVShowDetailsViewModel by viewModel()
@@ -32,6 +33,11 @@ class TVShowDetailsFragment : Fragment() {
         configureBindings(binding)
         configureTVShowEpisodesListener(binding)
         return binding.root
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewModel.fetchTVShowEpisodes(args.tvShow.id)
     }
 
     private fun configureBindings(binding: TvShowDetailsFragmentBinding) = with(binding) {
@@ -50,8 +56,7 @@ class TVShowDetailsFragment : Fragment() {
         }
         tvShowDetailsSpSeasons.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                val season = parent?.getItemAtPosition(position).toString()
-                viewModel.setSelectedSeason(season)
+                viewModel.setSelectedSeasonIndex(position)
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {}
@@ -75,8 +80,15 @@ class TVShowDetailsFragment : Fragment() {
                     }
                 }
             }
-            viewModel.selectedEpisodes.observe(viewLifecycleOwner) {
-                it.first()
+            viewModel.selectedEpisodes.observe(viewLifecycleOwner) { episodes ->
+                tvShowDetailsRvEpisodes.apply {
+                    layoutManager = object : LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false) {
+                        override fun canScrollVertically() = false
+                    }
+                    adapter = tvShowEpisodesAdapter.apply {
+                        addItems(episodes)
+                    }
+                }
             }
         }
 
@@ -89,10 +101,5 @@ class TVShowDetailsFragment : Fragment() {
             ).apply {
                 setDropDownViewResource(R.layout.tv_show_season_unselected_layout)
             }
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        viewModel.fetchTVShowEpisodes(args.tvShow.id)
     }
 }

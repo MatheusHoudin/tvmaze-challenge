@@ -20,4 +20,5 @@
     <string name="tv_show_details_tv_episodes">Episodes</string>
     <string name="tv_show_details_tv_episodes_schedule_time">New episodes at %s</string>
     <string name="tv_show_details_sp_season">Season %s</string>
+    <string name="tv_show_details_episode_tv_episode_name">%s. %s</string>
 </resources>

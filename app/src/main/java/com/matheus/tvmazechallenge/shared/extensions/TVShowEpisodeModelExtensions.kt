@@ -7,27 +7,27 @@ import com.matheus.tvmazechallenge.shared.model.TVShowEpisodeModel
 
 fun List<TVShowEpisodeModel>.toTVShowSeasonEpisodesEntity(): List<TVShowSeasonEpisodesEntity> {
     val tvShowSeasonEpisodes = mutableListOf<TVShowSeasonEpisodesEntity>()
+    var lastAddedSeasonNumber: Int = -1
 
     this.forEach {
-        if (thereIsNewSeasonToBeAdded(tvShowSeasonEpisodes, it.season)) {
+        if (thereIsNewSeasonToBeAdded(it.season, lastAddedSeasonNumber)) {
             tvShowSeasonEpisodes.add(TVShowSeasonEpisodesEntity(season = it.season.toString()))
         }
 
-        tvShowSeasonEpisodes[it.season - 1].episodes.add(it.toEntity())
+        lastAddedSeasonNumber = it.season
+        tvShowSeasonEpisodes[tvShowSeasonEpisodes.size - 1].episodes.add(it.toEntity())
     }
 
     return tvShowSeasonEpisodes
 }
 
-private fun thereIsNewSeasonToBeAdded(
-    currentSeasons: MutableList<TVShowSeasonEpisodesEntity>,
-    seasonNumber: Int
-): Boolean = seasonNumber > currentSeasons.size
+private fun thereIsNewSeasonToBeAdded(seasonNumber: Int, lastAddedSeason: Int): Boolean =
+    seasonNumber != lastAddedSeason
 
 fun TVShowEpisodeModel.toEntity() = TVShowEpisodeEntity(
     name = this.name,
     number = this.number.toString(),
     season = this.season.toString(),
-    summary = this.summary,
+    summary = this.summary.orEmpty(),
     image = this.image?.medium ?: Constants.DEFAULT_TVMAZE_IMAGE
 )

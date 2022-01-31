@@ -161,6 +161,7 @@
                     app:layout_constraintTop_toBottomOf="@id/tv_show_details_vw_divider"/>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/tv_show_details_cl_spinner_container"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -178,6 +179,18 @@
                         style="@style/Widget.AppCompat.DropDownItem.Spinner" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/tv_show_details_rv_episodes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginHorizontal="20dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_show_details_cl_spinner_container"
+                    tools:listitem="@layout/tv_show_episode_item_layout"
+                    tools:itemCount="2"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
