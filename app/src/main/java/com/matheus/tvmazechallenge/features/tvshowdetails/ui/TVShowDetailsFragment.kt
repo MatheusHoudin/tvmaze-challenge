@@ -7,10 +7,14 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.matheus.tvmazechallenge.R
 import com.matheus.tvmazechallenge.databinding.TvShowDetailsFragmentBinding
+import com.matheus.tvmazechallenge.features.tvshowdetails.ui.adapter.TVShowEpisodeAdapter
+import com.matheus.tvmazechallenge.features.tvshowdetails.ui.adapter.TVShowEpisodeScheduleAdapter
+import com.matheus.tvmazechallenge.features.tvshowdetails.ui.adapter.TVShowGenreAdapter
 import com.matheus.tvmazechallenge.features.tvshowdetails.viewmodel.TVShowDetailsViewModel
 import com.matheus.tvmazechallenge.shared.base.StateData
 import com.matheus.tvmazechallenge.shared.extensions.toSeasonList
@@ -63,6 +67,9 @@ class TVShowDetailsFragment : Fragment() {
 
         }
         tvShowsDetailsEmRetry.setOnRetryClickListener { viewModel.fetchTVShowEpisodes(args.tvShow.id) }
+        tvShowDetailsIvBack.setOnClickListener {
+            findNavController().popBackStack()
+        }
     }
 
     private fun configureTVShowEpisodesListener(binding: TvShowDetailsFragmentBinding) =

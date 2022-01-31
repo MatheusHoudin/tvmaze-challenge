@@ -32,6 +32,19 @@
                 isGone="@{isLoadingEpisodes}">
 
                 <ImageView
+                    android:id="@+id/tv_show_details_iv_back"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:src="@drawable/ic_back"
+                    android:layout_marginTop="20dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:theme="@style/rippleEffect"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <ImageView
                     android:id="@+id/tv_show_details_iv_poster"
                     android:layout_width="match_parent"
                     android:layout_height="300dp"

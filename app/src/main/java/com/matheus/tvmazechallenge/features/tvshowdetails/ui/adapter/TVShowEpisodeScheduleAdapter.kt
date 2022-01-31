@@ -1,4 +1,4 @@
-package com.matheus.tvmazechallenge.features.tvshowdetails.ui
+package com.matheus.tvmazechallenge.features.tvshowdetails.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -30,8 +30,8 @@ class TVShowEpisodeScheduleAdapter : BaseAdapter<TVShowEpisodeScheduleAdapter.Ep
     override fun getLayoutRes() = R.layout.tv_show_episode_schedule_item_layout
 
     inner class TVShowEpisodeScheduleViewHolder(private val binding: TvShowEpisodeScheduleItemLayoutBinding) :
-        BaseViewHolder<TVShowEpisodeScheduleAdapter.EpisodeSchedule>(binding.root) {
-        override fun bind(item: TVShowEpisodeScheduleAdapter.EpisodeSchedule, position: Int) {
+        BaseViewHolder<EpisodeSchedule>(binding.root) {
+        override fun bind(item: EpisodeSchedule, position: Int) {
             binding.apply {
                 tvShowEpisodeScheduleTvDay.text = item.day
                 tvShowEpisodeScheduleClContainer.setBackgroundResource(
