@@ -43,7 +43,15 @@
         android:id="@+id/peopleFragment"
         android:name="com.matheus.tvmazechallenge.features.people.ui.PeopleFragment"
         android:label="@string/people_screen_label"
-        tools:layout="@layout/people_fragment"/>
+        tools:layout="@layout/people_fragment">
+        <action
+            android:id="@+id/action_people_to_people_details"
+            app:destination="@id/personDetailsFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
 
     <fragment
         android:id="@+id/tvShowDetailsFragment"
@@ -55,5 +63,15 @@
             android:name="tvShow"
             app:argType="com.matheus.tvmazechallenge.features.tvshows.entity.TVShowEntity"/>
     </fragment>
+
+    <dialog
+        android:id="@+id/personDetailsFragment"
+        android:name="com.matheus.tvmazechallenge.features.persondetails.ui.PersonDetailsFragment"
+        android:label="PeopleDetailsFragment"
+        tools:layout="@layout/person_details_layout">
+        <argument
+            android:name="person"
+            app:argType="com.matheus.tvmazechallenge.features.people.entity.PersonEntity"/>
+    </dialog>
 
 </navigation>

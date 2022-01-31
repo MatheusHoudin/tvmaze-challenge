@@ -23,12 +23,10 @@ class TVShowsFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        val binding = GenericImageDescriptionListFragmentBinding.inflate(inflater, container, false)
-        configureBindings(binding)
-        configureTVMazeShowListener(binding)
-        return binding.root
-    }
+    ) = GenericImageDescriptionListFragmentBinding.inflate(inflater, container, false).also {
+        configureBindings(it)
+        configureTVMazeShowListener(it)
+    }.root
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

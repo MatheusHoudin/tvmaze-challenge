@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.matheus.tvmazechallenge.databinding.GenericImageDescriptionListFragmentBinding
 import com.matheus.tvmazechallenge.features.people.viewmodel.PeopleViewModel
@@ -21,12 +22,10 @@ class PeopleFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        val binding = GenericImageDescriptionListFragmentBinding.inflate(inflater, container, false)
-        configureBindings(binding)
-        configurePeopleListener(binding)
-        return binding.root
-    }
+    ) = GenericImageDescriptionListFragmentBinding.inflate(inflater, container, false).also {
+        configureBindings(it)
+        configurePeopleListener(it)
+    }.root
 
     private fun configureBindings(binding: GenericImageDescriptionListFragmentBinding) =
         with(binding) {
@@ -37,7 +36,9 @@ class PeopleFragment : Fragment() {
                 layoutManager = peopleLayoutManager
                 adapter = peopleAdapter.apply {
                     onClickListener = { personEntity ->
-
+                        PeopleFragmentDirections.actionPeopleToPeopleDetails(personEntity).let {
+                            findNavController().navigate(it)
+                        }
                     }
                 }
                 addOnScrollListener(EndOfScrollListener(peopleLayoutManager) {

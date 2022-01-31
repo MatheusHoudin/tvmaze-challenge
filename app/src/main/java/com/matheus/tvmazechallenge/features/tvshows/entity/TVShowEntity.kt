@@ -8,6 +8,7 @@ data class TVShowEntity(
     val id: Int,
     val name: String,
     val poster: String,
+    val url: String,
     val schedule: TVShowScheduleEntity,
     val genres: List<String>,
     val summary: String

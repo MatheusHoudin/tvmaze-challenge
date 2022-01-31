@@ -32,12 +32,10 @@ class TVShowDetailsFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        val binding = TvShowDetailsFragmentBinding.inflate(inflater, container, false)
-        configureBindings(binding)
-        configureTVShowEpisodesListener(binding)
-        return binding.root
-    }
+    ) = TvShowDetailsFragmentBinding.inflate(inflater, container, false).also {
+        configureBindings(it)
+        configureTVShowEpisodesListener(it)
+    }.root
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,14 +56,20 @@ class TVShowDetailsFragment : Fragment() {
                 setEpisodeScheduleItems(args.tvShow.schedule.days)
             }
         }
-        tvShowDetailsSpSeasons.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                viewModel.setSelectedSeasonIndex(position)
+        tvShowDetailsSpSeasons.onItemSelectedListener =
+            object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(
+                    parent: AdapterView<*>?,
+                    view: View?,
+                    position: Int,
+                    id: Long
+                ) {
+                    viewModel.setSelectedSeasonIndex(position)
+                }
+
+                override fun onNothingSelected(parent: AdapterView<*>?) {}
+
             }
-
-            override fun onNothingSelected(parent: AdapterView<*>?) {}
-
-        }
         tvShowsDetailsEmRetry.setOnRetryClickListener { viewModel.fetchTVShowEpisodes(args.tvShow.id) }
         tvShowDetailsIvBack.setOnClickListener {
             findNavController().popBackStack()
@@ -94,9 +98,10 @@ class TVShowDetailsFragment : Fragment() {
             }
             viewModel.selectedEpisodes.observe(viewLifecycleOwner) { episodes ->
                 tvShowDetailsRvEpisodes.apply {
-                    layoutManager = object : LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false) {
-                        override fun canScrollVertically() = false
-                    }
+                    layoutManager =
+                        object : LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false) {
+                            override fun canScrollVertically() = false
+                        }
                     adapter = tvShowEpisodesAdapter.apply {
                         addItems(episodes)
                     }

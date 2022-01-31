@@ -24,15 +24,11 @@ class SearchShowsFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        val binding = SearchShowsFragmentBinding.inflate(inflater, container, false)
-
-        configureSearch(binding)
-        configureBindings(binding)
-        configureSearchShowsListener(binding)
-
-        return binding.root
-    }
+    ) = SearchShowsFragmentBinding.inflate(inflater, container, false).also {
+        configureSearch(it)
+        configureBindings(it)
+        configureSearchShowsListener(it)
+    }.root
 
     private fun configureSearch(binding: SearchShowsFragmentBinding) {
         binding.searchShowsEtSearch.doOnTextChanged { search, _, _, _ ->
