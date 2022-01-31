@@ -1,9 +1,7 @@
 package com.matheus.tvmazechallenge.shared.model
 
-data class TVShowEpisodeModel(
+data class PeopleModel(
+    val id: Int,
     val name: String,
-    val season: Int,
-    val number: Int,
-    val summary: String?,
     val image: ImageModel?
 )

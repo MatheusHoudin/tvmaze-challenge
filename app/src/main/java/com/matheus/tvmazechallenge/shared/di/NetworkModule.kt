@@ -6,6 +6,7 @@ import retrofit2.Retrofit
 import java.util.concurrent.TimeUnit
 import com.matheus.tvmazechallenge.shared.Constants.API_BASE_URL
 import com.matheus.tvmazechallenge.shared.Constants.NETWORK_TIMEOUT
+import com.matheus.tvmazechallenge.shared.api.PeopleService
 import com.matheus.tvmazechallenge.shared.api.TVShowsService
 import org.koin.dsl.module
 import retrofit2.converter.gson.GsonConverterFactory
@@ -16,6 +17,7 @@ object NetworkModule {
         single { provideOkHttpInstance() }
         single { provideRetrofitInstance(get()) }
         single { provideTVMazeShowsService(get()) }
+        single { providePeopleService(get()) }
     }
 
     private fun provideRetrofitInstance(okHttpClient: OkHttpClient): Retrofit =
@@ -36,4 +38,7 @@ object NetworkModule {
 
     private fun provideTVMazeShowsService(retrofit: Retrofit): TVShowsService =
         retrofit.create(TVShowsService::class.java)
+
+    private fun providePeopleService(retrofit: Retrofit): PeopleService =
+        retrofit.create(PeopleService::class.java)
 }

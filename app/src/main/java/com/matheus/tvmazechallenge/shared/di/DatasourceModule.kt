@@ -1,5 +1,7 @@
 package com.matheus.tvmazechallenge.shared.di
 
+import com.matheus.tvmazechallenge.features.people.datasource.PeopleDatasource
+import com.matheus.tvmazechallenge.features.people.datasource.PeopleDatasourceImpl
 import com.matheus.tvmazechallenge.features.search.datasource.SearchTVShowDatasource
 import com.matheus.tvmazechallenge.features.search.datasource.SearchTVShowDatasourceImpl
 import com.matheus.tvmazechallenge.features.tvshowdetails.datasource.TVShowDetailsDatasource
@@ -13,5 +15,6 @@ object DatasourceModule {
         single<TVShowsDatasource> { TVShowsDatasourceImpl(get()) }
         single<SearchTVShowDatasource> { SearchTVShowDatasourceImpl(get()) }
         single<TVShowDetailsDatasource> { TVShowDetailsDatasourceImpl(get()) }
+        single<PeopleDatasource> { PeopleDatasourceImpl(get()) }
     }
 }

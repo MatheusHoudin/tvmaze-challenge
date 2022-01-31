@@ -8,8 +8,11 @@
             name="onClickListener"
             type="android.view.View.OnClickListener"/>
         <variable
-            name="tvshow"
-            type="com.matheus.tvmazechallenge.features.tvshows.entity.TVShowEntity" />
+            name="image"
+            type="String" />
+        <variable
+            name="description"
+            type="String" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -21,26 +24,26 @@
         android:paddingHorizontal="4dp">
 
         <ImageView
-            android:id="@+id/tv_show_item_iv_poster"
+            android:id="@+id/image_description_iv_poster"
             android:layout_width="150dp"
             android:layout_height="200dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:imageFromUrl="@{tvshow.poster}"/>
+            app:imageFromUrl="@{image}"/>
 
         <TextView
-            android:id="@+id/tv_show_item_tv_show_title"
+            android:id="@+id/image_description_tv_show_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:textSize="16sp"
             android:textColor="@color/white"
             android:gravity="center"
-            android:text="@{tvshow.name}"
+            android:text="@{description}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_show_item_iv_poster"
+            app:layout_constraintTop_toBottomOf="@id/image_description_iv_poster"
             android:fontFamily="@font/firasans_regular"
             tools:text="TVMaze show name"/>
 

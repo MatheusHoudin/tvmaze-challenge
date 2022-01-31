@@ -1,5 +1,7 @@
 package com.matheus.tvmazechallenge.shared.di
 
+import com.matheus.tvmazechallenge.features.people.respository.PeopleRepository
+import com.matheus.tvmazechallenge.features.people.respository.PeopleRepositoryImpl
 import com.matheus.tvmazechallenge.features.search.repository.SearchTVShowRepository
 import com.matheus.tvmazechallenge.features.search.repository.SearchTVShowRepositoryImpl
 import com.matheus.tvmazechallenge.features.tvshowdetails.repository.TVShowDetailsRepository
@@ -13,5 +15,6 @@ object RepositoryModule {
         single<TVShowsRepository> { TVShowRepositoryImpl(get()) }
         single<SearchTVShowRepository> { SearchTVShowRepositoryImpl(get()) }
         single<TVShowDetailsRepository> { TVShowDetailsRepositoryImpl(get()) }
+        single<PeopleRepository> { PeopleRepositoryImpl(get()) }
     }
 }
