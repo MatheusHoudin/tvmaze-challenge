@@ -8,6 +8,7 @@ import com.matheus.tvmazechallenge.shared.model.TVShowModel
 fun TVShowModel.toEntity() = TVShowEntity(
     id = this.id,
     name = this.name,
+    url = this.url,
     poster = this.image?.medium ?: Constants.DEFAULT_TVMAZE_IMAGE,
     schedule = TVShowScheduleEntity(
         time = this.schedule.time,

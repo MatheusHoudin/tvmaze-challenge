@@ -24,7 +24,7 @@
         android:paddingHorizontal="4dp">
 
         <ImageView
-            android:id="@+id/image_description_iv_poster"
+            android:id="@+id/cast_credit_show_iv_show_image"
             android:layout_width="150dp"
             android:layout_height="200dp"
             app:layout_constraintStart_toStartOf="parent"
@@ -43,7 +43,7 @@
             android:text="@{description}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/image_description_iv_poster"
+            app:layout_constraintTop_toBottomOf="@id/cast_credit_show_iv_show_image"
             android:fontFamily="@font/firasans_regular"
             tools:text="TVMaze show name"/>
 

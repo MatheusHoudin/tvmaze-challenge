@@ -7,5 +7,6 @@ import com.matheus.tvmazechallenge.shared.model.PeopleModel
 fun PeopleModel.toEntity() = PersonEntity(
     id = this.id,
     name = this.name,
+    url = this.url,
     image = this.image?.medium ?: Constants.DEFAULT_TVMAZE_IMAGE,
 )

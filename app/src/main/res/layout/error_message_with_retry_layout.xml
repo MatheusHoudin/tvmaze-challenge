@@ -28,6 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
+            android:backgroundTint="@color/tvmaze_secondary_color"
             android:text="@string/error_message_with_retry_button_name"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

@@ -7,5 +7,6 @@ import kotlinx.android.parcel.Parcelize
 data class PersonEntity(
     val id: Int,
     val name: String,
+    val url: String,
     val image: String
 ): Parcelable

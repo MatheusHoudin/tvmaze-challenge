@@ -1,30 +1,168 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
         <variable
-            name="name"
-            type="String" />
+            name="person"
+            type="com.matheus.tvmazechallenge.features.people.entity.PersonEntity" />
+        <variable
+            name="isLoadingItems"
+            type="boolean"/>
+        <variable
+            name="thereIsError"
+            type="boolean"/>
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/person_details_dialog_background">
+        android:fillViewport="true">
 
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:text="@{name}"
-            android:textColor="@color/white"
-            tools:text="Movie Name"/>
+            android:background="@drawable/person_details_dialog_background">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/person_details_cl_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <View
+                    android:layout_width="60dp"
+                    android:layout_height="6dp"
+                    android:background="@drawable/person_details_header_indicator_background"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <ImageView
+                    android:id="@+id/person_details_iv_close"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_close"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:theme="@style/rippleEffect"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/person_details_cl_person_section"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/person_details_cl_header">
+
+                <ImageView
+                    android:id="@+id/cast_credit_show_iv_show_image"
+                    android:layout_width="150dp"
+                    android:layout_height="160dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:imageFromUrl="@{person.image}"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/person_details_tv_person_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{person.name}"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/firasans_semibold"
+                    android:textColor="@color/white"
+                    app:layout_constraintStart_toEndOf="@id/cast_credit_show_iv_show_image"
+                    app:layout_constraintTop_toTopOf="@id/cast_credit_show_iv_show_image"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:text="Person Name" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/people_details_bt_open_on_web"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/firasans_semibold"
+                    app:rippleColor="@color/grey"
+                    android:backgroundTint="@color/white"
+                    android:textColor="@color/tvmaze_secondary_color"
+                    android:text="@string/person_details_open_on_web"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/cast_credit_show_iv_show_image"
+                    app:layout_constraintTop_toBottomOf="@id/person_details_tv_person_name"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/person_details_cl_person_section">
+
+                <TextView
+                    android:id="@+id/person_details_tv_cast_credits"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:layout_marginStart="10dp"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/firasans_bold"
+                    android:text="@string/person_details_cast_credits"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.matheus.tvmazechallenge.shared.components.ErrorMessageWithRetry
+                    android:id="@+id/person_details_em_retry"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    isGone="@{!thereIsError}"
+                    android:layout_marginTop="20dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/person_details_tv_cast_credits"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/person_details_rv_cast_credits"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    isGone="@{isLoadingItems || thereIsError}"
+                    app:spanCount="2"
+                    android:orientation="vertical"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/person_details_tv_cast_credits"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    tools:listitem="@layout/cast_credit_show_layout"
+                    tools:visibility="gone"/>
+
+                <com.google.android.material.progressindicator.CircularProgressIndicator
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    app:indicatorColor="@color/tvmaze_secondary_color"
+                    android:indeterminateTint="@color/tvmaze_secondary_color"
+                    android:indeterminate="true"
+                    app:isGone="@{!isLoadingItems}"
+                    android:layout_marginTop="30dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/person_details_tv_cast_credits"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
 
 </layout>

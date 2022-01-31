@@ -7,6 +7,7 @@ data class PeopleModel(
     val id: Int,
     @SerializedName("name")
     val name: String,
+    val url: String,
     @SerializedName("image")
     val image: ImageModel?
 )

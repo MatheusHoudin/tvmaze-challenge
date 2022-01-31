@@ -3,10 +3,10 @@
     android:shape="rectangle"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <solid android:color="@color/grey"/>
+    <solid android:color="@color/tvmaze_light_main_color"/>
     <corners
-        android:topLeftRadius="12dp"
-        android:topRightRadius="12dp"/>
+        android:topLeftRadius="22dp"
+        android:topRightRadius="22dp"/>
     <padding
         android:top="8dp"
         android:left="8dp"

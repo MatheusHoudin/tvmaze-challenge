@@ -2,7 +2,7 @@ package com.matheus.tvmazechallenge.shared.model
 
 import com.google.gson.annotations.SerializedName
 
-data class PersonDetailsModel(
+data class CastCreditsModel(
     @SerializedName("type")
     val creditType: String,
     @SerializedName("_embedded")

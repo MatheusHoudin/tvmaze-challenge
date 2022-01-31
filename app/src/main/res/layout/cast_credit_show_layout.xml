@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="castCredit"
+            type="com.matheus.tvmazechallenge.features.persondetails.entity.CastCreditsEntity" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:background="@color/tvmaze_light_main_color">
+
+        <ImageView
+            android:id="@+id/cast_credit_show_iv_show_image"
+            android:layout_width="150dp"
+            android:layout_height="180dp"
+            app:imageFromUrl="@{castCredit.tvShow.poster}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/cast_credit_show_iv_show_image"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <TextView
+                android:id="@+id/cast_credit_show_tv_show_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:fontFamily="@font/firasans_semibold"
+                android:text="@{castCredit.tvShow.name}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="Cast Credit Show Name"/>
+
+            <TextView
+                android:id="@+id/cast_credit_show_tv_cast_credit_role"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:fontFamily="@font/firasans_regular"
+                android:text="@{castCredit.creditType}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cast_credit_show_tv_show_name"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="Cast Credit Person Role"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/cast_credit_show_bt_see_more_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/firasans_semibold"
+                android:backgroundTint="@color/tvmaze_secondary_color"
+                android:text="@string/cast_credits_show_see_more_details"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cast_credit_show_tv_cast_credit_role"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/cast_credit_show_bt_open_on_web"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/firasans_semibold"
+                app:rippleColor="@color/grey"
+                android:backgroundTint="@color/white"
+                android:textColor="@color/tvmaze_secondary_color"
+                android:text="@string/cast_credits_show_open_on_web"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cast_credit_show_bt_see_more_details"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

@@ -13,4 +13,8 @@ object Failure {
         StateData.Failure(message = "Sorry, an unexpected error has occurred while fetching this TV Show episodes, please try again!")
     val getPeopleFailure =
         StateData.Failure(message = "Sorry, an unexpected error has occurred while fetching people data, please try again!")
+    val getCastCreditsFailure =
+        StateData.Failure(message = "Sorry, an unexpected error has occurred while cast credits data, please try again!")
+    val thereAreNoCastCreditsFailure =
+        StateData.Failure(message = "No cast credits were found for this person!")
 }

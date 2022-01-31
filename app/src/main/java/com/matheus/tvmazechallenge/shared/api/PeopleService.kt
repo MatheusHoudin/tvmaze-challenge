@@ -1,8 +1,9 @@
 package com.matheus.tvmazechallenge.shared.api
 
 import com.matheus.tvmazechallenge.shared.model.PeopleModel
-import com.matheus.tvmazechallenge.shared.model.PersonDetailsModel
+import com.matheus.tvmazechallenge.shared.model.CastCreditsModel
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface PeopleService {
@@ -10,6 +11,6 @@ interface PeopleService {
     @GET("/people")
     suspend fun getPeopleByPage(@Query("page") page: Int): List<PeopleModel>
 
-    @GET("/{personId}/castcredits?embed=show")
-    suspend fun getPersonCastCredits(personId: Int): List<PersonDetailsModel>
+    @GET("/people/{personId}/crewcredits?embed=show")
+    suspend fun getPersonCastCredits(@Path("personId") personId: Int): List<CastCreditsModel>
 }

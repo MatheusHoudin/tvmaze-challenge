@@ -3,6 +3,7 @@ package com.matheus.tvmazechallenge.shared.components
 import android.content.Context
 import android.util.AttributeSet
 import android.view.View
+import androidx.annotation.ColorRes
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.matheus.tvmazechallenge.R
 import kotlinx.android.synthetic.main.error_message_with_retry_layout.view.*
