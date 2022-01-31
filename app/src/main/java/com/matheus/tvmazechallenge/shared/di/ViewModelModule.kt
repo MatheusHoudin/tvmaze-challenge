@@ -7,8 +7,8 @@ import org.koin.dsl.module
 
 object ViewModelModule {
     val viewModelModule = module {
-        single { TVShowsViewModel(get()) }
-        single { SearchTVShowsViewModel(get()) }
-        single { TVShowDetailsViewModel(get()) }
+        factory { TVShowsViewModel(get()) }
+        factory { SearchTVShowsViewModel(get()) }
+        factory { TVShowDetailsViewModel(get()) }
     }
 }

@@ -22,7 +22,7 @@ class TVShowDetailsRepositoryImpl(
             } catch (e: Exception) {
                 when (e) {
                     is IOException, is SocketException -> Failure.noInternetConnectionFailure
-                    else -> Failure.unexpectedFailure
+                    else -> Failure.getEpisodesFailure
                 }
             }
         }

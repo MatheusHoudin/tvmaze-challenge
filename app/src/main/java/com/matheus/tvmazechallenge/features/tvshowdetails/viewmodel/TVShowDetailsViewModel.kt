@@ -45,7 +45,6 @@ class TVShowDetailsViewModel(
     }
 
     private companion object {
-        const val SEASON_PREFIX = "Season "
         const val INITIAL_SEASON_INDEX = 0
     }
 }

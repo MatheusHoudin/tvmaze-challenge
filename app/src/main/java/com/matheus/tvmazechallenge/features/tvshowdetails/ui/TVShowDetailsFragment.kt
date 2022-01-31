@@ -62,6 +62,7 @@ class TVShowDetailsFragment : Fragment() {
             override fun onNothingSelected(parent: AdapterView<*>?) {}
 
         }
+        tvShowsDetailsEmRetry.setOnRetryClickListener { viewModel.fetchTVShowEpisodes(args.tvShow.id) }
     }
 
     private fun configureTVShowEpisodesListener(binding: TvShowDetailsFragmentBinding) =
@@ -70,13 +71,17 @@ class TVShowDetailsFragment : Fragment() {
                 when (it) {
                     is StateData.Success -> {
                         isLoadingEpisodes = false
+                        thereIsError = false
                         fillSeasonsSpinner(binding, it.data.toSeasonList())
                     }
                     is StateData.Loading -> {
                         isLoadingEpisodes = true
+                        thereIsError = false
                     }
                     is StateData.Failure -> {
                         isLoadingEpisodes = false
+                        thereIsError = true
+                        tvShowsDetailsEmRetry.setErrorMessage(it.message)
                     }
                 }
             }
