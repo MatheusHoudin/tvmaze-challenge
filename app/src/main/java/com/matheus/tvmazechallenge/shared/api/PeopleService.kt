@@ -7,5 +7,5 @@ import retrofit2.http.Query
 interface PeopleService {
 
     @GET("/people")
-    fun getPeopleByPage(@Query("page") page: Int): List<PeopleModel>
+    suspend fun getPeopleByPage(@Query("page") page: Int): List<PeopleModel>
 }

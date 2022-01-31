@@ -9,7 +9,7 @@
         android:id="@+id/homeShowsFragment"
         android:name="com.matheus.tvmazechallenge.features.tvshows.ui.TVShowsFragment"
         android:label="@string/home_screen_label"
-        tools:layout="@layout/tv_shows_fragment">
+        tools:layout="@layout/generic_image_description_list_fragment">
         <action
             android:id="@+id/action_tv_show_to_tv_show_details"
             app:destination="@id/tvShowDetailsFragment"

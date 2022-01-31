@@ -5,7 +5,7 @@
 
     <data>
         <variable
-            name="isLoadingShows"
+            name="isLoadingItems"
             type="boolean"/>
         <variable
             name="thereIsError"
@@ -19,11 +19,11 @@
         android:background="@color/tvmaze_main_color">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/tv_shows_fragment_rv_shows"
+            android:id="@+id/generic_image_description_list_fragment_rv_shows"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textAlignment="center"
-            isGone="@{isLoadingShows || thereIsError}"
+            isGone="@{isLoadingItems || thereIsError}"
             app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
             app:spanCount="2"/>
 
@@ -33,7 +33,7 @@
             app:indicatorColor="@color/tvmaze_secondary_color"
             android:indeterminateTint="@color/tvmaze_secondary_color"
             android:indeterminate="true"
-            app:isGone="@{!isLoadingShows}"
+            app:isGone="@{!isLoadingItems}"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
