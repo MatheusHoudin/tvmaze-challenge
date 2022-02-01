@@ -2,9 +2,9 @@ package com.matheus.tvmazechallenge.features.tvshowdetails.datasource
 
 import com.matheus.tvmazechallenge.shared.api.TVShowsService
 
-class TVShowDetailsDatasourceImpl(
+class TVShowDetailsRemoteDatasourceImpl(
     private val tvShowsService: TVShowsService
-) : TVShowDetailsDatasource {
+) : TVShowDetailsRemoteDatasource {
     override suspend fun getShowEpisodes(tvShowId: Int) =
         tvShowsService.getShowEpisodes(tvShowId)
 }

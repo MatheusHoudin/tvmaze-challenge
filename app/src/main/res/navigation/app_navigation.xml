@@ -35,9 +35,17 @@
 
     <fragment
         android:id="@+id/favoriteShowsFragment"
-        android:name="com.matheus.tvmazechallenge.features.favorites.ui.FavoriteShowsFragment"
+        android:name="com.matheus.tvmazechallenge.features.favorites.ui.FavoriteTVShowsFragment"
         android:label="@string/favorite_screen_label"
-        tools:layout="@layout/favorite_shows_fragment"/>
+        tools:layout="@layout/generic_image_description_list_fragment">
+        <action
+            android:id="@+id/action_favorite_shows_to_tv_show_details"
+            app:destination="@id/tvShowDetailsFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
 
     <fragment
         android:id="@+id/peopleFragment"

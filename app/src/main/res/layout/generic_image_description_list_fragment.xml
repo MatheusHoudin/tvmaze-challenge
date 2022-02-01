@@ -23,6 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textAlignment="center"
+            android:paddingBottom="56dp"
             isGone="@{isLoadingItems || thereIsError}"
             app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
             app:spanCount="2"/>
@@ -40,7 +41,7 @@
             app:layout_constraintBottom_toBottomOf="parent"/>
 
         <com.matheus.tvmazechallenge.shared.components.ErrorMessageWithRetry
-            android:id="@+id/tv_shows_fragment_em_retry"
+            android:id="@+id/generic_image_description_list_fragment_em_retry"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             isGone="@{!thereIsError}"

@@ -1,4 +1,4 @@
-package com.matheus.tvmazechallenge.features.tvshows.ui
+package com.matheus.tvmazechallenge.features.favorites.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,16 +7,21 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.matheus.tvmazechallenge.databinding.GenericImageDescriptionListFragmentBinding
-import com.matheus.tvmazechallenge.features.tvshows.viewmodel.TVShowsViewModel
+import com.matheus.tvmazechallenge.features.favorites.viewmodel.FavoriteTVShowsViewModel
 import com.matheus.tvmazechallenge.shared.adapter.TVShowAdapter
 import com.matheus.tvmazechallenge.shared.base.StateData
-import com.matheus.tvmazechallenge.shared.util.EndOfScrollListener
+import com.matheus.tvmazechallenge.shared.error.Failure
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class TVShowsFragment : Fragment() {
+class FavoriteTVShowsFragment : Fragment() {
 
     private val tvShowAdapter = TVShowAdapter()
-    private val viewModel: TVShowsViewModel by viewModel()
+    private val viewModel: FavoriteTVShowsViewModel by viewModel()
+
+    override fun onResume() {
+        super.onResume()
+        fetchFavoriteTVShows()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -27,34 +32,26 @@ class TVShowsFragment : Fragment() {
         configureTVMazeShowListener(it)
     }.root
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        fetchTVShows()
-    }
-
     private fun configureBindings(binding: GenericImageDescriptionListFragmentBinding) =
         with(binding) {
             thereIsError = false
-            genericImageDescriptionListFragmentEmRetry.setOnRetryClickListener { fetchTVShows() }
+            genericImageDescriptionListFragmentEmRetry.setOnRetryClickListener { fetchFavoriteTVShows() }
             genericImageDescriptionListFragmentRvShows.apply {
-                val tvShowsLayoutManager = GridLayoutManager(context, TV_SHOWS_PER_ROW)
-                layoutManager = tvShowsLayoutManager
+                layoutManager = GridLayoutManager(context, TV_SHOWS_PER_ROW)
                 adapter = tvShowAdapter.apply {
                     onClickListener = { tvShow ->
-                        TVShowsFragmentDirections.actionTvShowToTvShowDetails(tvShow).let {
-                            findNavController().navigate(it)
-                        }
+                        FavoriteTVShowsFragmentDirections.actionFavoriteShowsToTvShowDetails(tvShow)
+                            .let {
+                                findNavController().navigate(it)
+                            }
                     }
                 }
-                addOnScrollListener(EndOfScrollListener(tvShowsLayoutManager) {
-                    fetchTVShows()
-                })
             }
         }
 
     private fun configureTVMazeShowListener(binding: GenericImageDescriptionListFragmentBinding) =
         with(binding) {
-            viewModel.showsResult.observe(viewLifecycleOwner) {
+            viewModel.favoriteTVShowsResult.observe(viewLifecycleOwner) {
                 when (it) {
                     is StateData.Success -> {
                         isLoadingItems = false
@@ -66,6 +63,9 @@ class TVShowsFragment : Fragment() {
                         isLoadingItems = true
                     }
                     is StateData.Failure -> {
+                        if (it == Failure.thereAreNoFavoriteTVShowsFailure) {
+                            genericImageDescriptionListFragmentEmRetry.hideRetryButton()
+                        }
                         genericImageDescriptionListFragmentEmRetry.setErrorMessage(it.message)
                         thereIsError = true
                         isLoadingItems = false
@@ -74,7 +74,7 @@ class TVShowsFragment : Fragment() {
             }
         }
 
-    private fun fetchTVShows() = viewModel.fetchShows()
+    private fun fetchFavoriteTVShows() = viewModel.fetchFavoriteTVShows()
 
     private companion object {
         const val TV_SHOWS_PER_ROW = 2

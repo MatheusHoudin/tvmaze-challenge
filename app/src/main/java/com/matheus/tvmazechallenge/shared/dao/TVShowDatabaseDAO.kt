@@ -1,13 +1,20 @@
 package com.matheus.tvmazechallenge.shared.dao
 
-import androidx.room.Dao
-import androidx.room.Query
-import androidx.room.Transaction
+import androidx.room.*
 
 @Dao
 interface TVShowDatabaseDAO {
 
     @Transaction
+    @Query("SELECT * FROM tv_show ORDER BY name")
+    fun getAll(): List<TVShowDAO>
+
+    @Insert
+    fun saveFavorite(tvShow: TVShowDAO)
+
+    @Delete
+    fun remoteFavorite(tvShow: TVShowDAO)
+
     @Query("SELECT * FROM tv_show WHERE id = :tvShowId")
-    fun getTVShow(tvShowId: Int): List<TVShowAndScheduleDAO>
+    fun getFavorite(tvShowId: Int): TVShowDAO?
 }

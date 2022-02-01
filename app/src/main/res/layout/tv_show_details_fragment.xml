@@ -55,6 +55,17 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:imageFromUrl="@{tvShowDetails.poster}"/>
 
+                <ImageView
+                    android:id="@+id/tv_show_details_iv_favorite_tv_show"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:theme="@style/rippleEffect"
+                    android:layout_marginTop="20dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:src="@drawable/ic_favorite_enabled"/>
+
                 <TextView
                     android:id="@+id/tv_shows_details_tv_name"
                     android:layout_width="wrap_content"

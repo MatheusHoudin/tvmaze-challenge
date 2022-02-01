@@ -1,5 +1,6 @@
 package com.matheus.tvmazechallenge.shared.di
 
+import com.matheus.tvmazechallenge.features.favorites.viewmodel.FavoriteTVShowsViewModel
 import com.matheus.tvmazechallenge.features.people.viewmodel.PeopleViewModel
 import com.matheus.tvmazechallenge.features.persondetails.viewmodel.PersonDetailsViewModel
 import com.matheus.tvmazechallenge.features.search.viewmodel.SearchTVShowsViewModel
@@ -14,5 +15,6 @@ object ViewModelModule {
         factory { TVShowDetailsViewModel(get()) }
         factory { PeopleViewModel(get()) }
         factory { PersonDetailsViewModel(get()) }
+        factory { FavoriteTVShowsViewModel(get()) }
     }
 }

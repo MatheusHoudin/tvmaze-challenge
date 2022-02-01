@@ -1,6 +1,6 @@
 package com.matheus.tvmazechallenge.features.tvshows.repository
 
-import com.matheus.tvmazechallenge.features.tvshows.datasource.TVShowsDatasource
+import com.matheus.tvmazechallenge.features.tvshows.datasource.TVShowsRemoteDatasource
 import com.matheus.tvmazechallenge.features.tvshows.entity.TVShowEntity
 import com.matheus.tvmazechallenge.shared.base.StateData
 import com.matheus.tvmazechallenge.shared.error.Failure
@@ -12,13 +12,13 @@ import java.lang.Exception
 import java.net.SocketException
 
 class TVShowRepositoryImpl(
-    private val tvShowsDatasource: TVShowsDatasource
+    private val tvShowsRemoteDatasource: TVShowsRemoteDatasource
 ) : TVShowsRepository {
 
     override suspend fun getShowsByPage(page: Int): StateData<List<TVShowEntity>> =
         withContext(Dispatchers.IO) {
             try {
-                val showsEntities = tvShowsDatasource.getShowsByPage(page).map { it.toEntity() }
+                val showsEntities = tvShowsRemoteDatasource.getShowsByPage(page).map { it.toEntity() }
                 StateData.Success(showsEntities)
             } catch (e: Exception) {
                 when (e) {

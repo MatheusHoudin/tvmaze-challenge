@@ -2,7 +2,6 @@ package com.matheus.tvmazechallenge.features.people.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
@@ -30,7 +29,7 @@ class PeopleFragment : Fragment() {
     private fun configureBindings(binding: GenericImageDescriptionListFragmentBinding) =
         with(binding) {
             thereIsError = false
-            tvShowsFragmentEmRetry.setOnRetryClickListener { fetchPeople() }
+            genericImageDescriptionListFragmentEmRetry.setOnRetryClickListener { fetchPeople() }
             genericImageDescriptionListFragmentRvShows.apply {
                 val peopleLayoutManager = GridLayoutManager(context, PEOPLE_PER_ROW)
                 layoutManager = peopleLayoutManager
@@ -61,7 +60,7 @@ class PeopleFragment : Fragment() {
                         isLoadingItems = true
                     }
                     is StateData.Failure -> {
-                        tvShowsFragmentEmRetry.setErrorMessage(it.message)
+                        genericImageDescriptionListFragmentEmRetry.setErrorMessage(it.message)
                         thereIsError = true
                         isLoadingItems = false
                     }

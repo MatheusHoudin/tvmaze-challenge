@@ -6,12 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.matheus.tvmazechallenge.R
 import com.matheus.tvmazechallenge.databinding.TvShowDetailsFragmentBinding
+import com.matheus.tvmazechallenge.features.favorites.viewmodel.FavoriteTVShowsViewModel
 import com.matheus.tvmazechallenge.features.tvshowdetails.ui.adapter.TVShowEpisodeAdapter
 import com.matheus.tvmazechallenge.features.tvshowdetails.ui.adapter.TVShowEpisodeScheduleAdapter
 import com.matheus.tvmazechallenge.features.tvshowdetails.ui.adapter.TVShowGenreAdapter
@@ -25,6 +27,7 @@ class TVShowDetailsFragment : Fragment() {
     private val tvShowEpisodesAdapter = TVShowEpisodeAdapter()
     private val tvShowEpisodeScheduleAdapter = TVShowEpisodeScheduleAdapter()
     private val tvShowGenreAdapter = TVShowGenreAdapter()
+    private val favoriteViewModel: FavoriteTVShowsViewModel by viewModel()
     private val viewModel: TVShowDetailsViewModel by viewModel()
     private val args: TVShowDetailsFragmentArgs by navArgs()
 
@@ -44,6 +47,7 @@ class TVShowDetailsFragment : Fragment() {
 
     private fun configureBindings(binding: TvShowDetailsFragmentBinding) = with(binding) {
         tvShowDetails = args.tvShow
+        favoriteViewModel.getFavoriteTVShow(args.tvShow.id)
         tvShowDetailsRvGenres.apply {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             adapter = tvShowGenreAdapter.apply {
@@ -73,6 +77,9 @@ class TVShowDetailsFragment : Fragment() {
         tvShowsDetailsEmRetry.setOnRetryClickListener { viewModel.fetchTVShowEpisodes(args.tvShow.id) }
         tvShowDetailsIvBack.setOnClickListener {
             findNavController().popBackStack()
+        }
+        tvShowDetailsIvFavoriteTvShow.setOnClickListener {
+            favoriteViewModel.updateFavoriteTVShow(args.tvShow)
         }
     }
 
@@ -106,6 +113,22 @@ class TVShowDetailsFragment : Fragment() {
                         addItems(episodes)
                     }
                 }
+            }
+            favoriteViewModel.favoriteEnabled.observe(viewLifecycleOwner) { isFavoriteTVShow ->
+                tvShowDetailsIvFavoriteTvShow.setImageResource(
+                    if (isFavoriteTVShow)
+                        R.drawable.ic_favorite_enabled
+                    else
+                        R.drawable.ic_favorite_disabled
+                )
+            }
+            favoriteViewModel.isFavoriteAdded.observe(viewLifecycleOwner) { isAddedToFavorites ->
+                val message =
+                    if (isAddedToFavorites)
+                        R.string.tv_show_details_tv_show_added_to_favorites
+                    else
+                        R.string.tv_show_details_tv_show_removed_to_favorites
+                Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
             }
         }
 

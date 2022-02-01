@@ -17,4 +17,6 @@ object Failure {
         StateData.Failure(message = "Sorry, an unexpected error has occurred while cast credits data, please try again!")
     val thereAreNoCastCreditsFailure =
         StateData.Failure(message = "No cast credits were found for this person!")
+    val thereAreNoFavoriteTVShowsFailure =
+        StateData.Failure(message = "You have not added any TV Show to your favorites list yet!")
 }

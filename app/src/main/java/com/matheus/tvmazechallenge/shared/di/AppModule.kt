@@ -5,5 +5,6 @@ object AppModule {
         NetworkModule.networkModule +
                 DatasourceModule.datasourceModule +
                 RepositoryModule.repositoryModule +
-                ViewModelModule.viewModelModule
+                ViewModelModule.viewModelModule +
+                LocalDatabaseModule.localDatabaseModule
 }

@@ -45,7 +45,7 @@ dependencies {
     def koin_version = "2.2.3"
     def retrofit2_version = "2.9.0"
     def okhttp3_version = "4.9.1"
-    def room_version = "2.3.0"
+    def room_version = "2.4.0-alpha03"
 
     implementation "com.squareup.retrofit2:retrofit:$retrofit2_version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit2_version"

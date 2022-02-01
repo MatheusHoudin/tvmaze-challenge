@@ -1,6 +1,6 @@
 package com.matheus.tvmazechallenge.features.persondetails.repository
 
-import com.matheus.tvmazechallenge.features.persondetails.datasource.PersonDetailsDatasource
+import com.matheus.tvmazechallenge.features.persondetails.datasource.PersonDetailsRemoteDatasource
 import com.matheus.tvmazechallenge.features.persondetails.entity.CastCreditsEntity
 import com.matheus.tvmazechallenge.shared.base.StateData
 import com.matheus.tvmazechallenge.shared.error.Failure
@@ -12,14 +12,14 @@ import java.lang.Exception
 import java.net.SocketException
 
 class PersonDetailsRepositoryImpl(
-    private val personDetailsDatasource: PersonDetailsDatasource
+    private val personDetailsRemoteDatasource: PersonDetailsRemoteDatasource
 ) : PersonDetailsRepository {
 
     override suspend fun getPersonCastCredits(personId: Int): StateData<List<CastCreditsEntity>> =
         withContext(Dispatchers.IO) {
             try {
                 val personCastCreditsEntities =
-                    personDetailsDatasource.getPersonCastCredits(personId).map { it.toEntity() }
+                    personDetailsRemoteDatasource.getPersonCastCredits(personId).map { it.toEntity() }
 
                 StateData.Success(personCastCreditsEntities)
             } catch (e: Exception) {

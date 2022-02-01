@@ -1,6 +1,6 @@
 package com.matheus.tvmazechallenge.features.people.respository
 
-import com.matheus.tvmazechallenge.features.people.datasource.PeopleDatasource
+import com.matheus.tvmazechallenge.features.people.datasource.PeopleRemoteDatasource
 import com.matheus.tvmazechallenge.features.people.entity.PersonEntity
 import com.matheus.tvmazechallenge.shared.base.StateData
 import com.matheus.tvmazechallenge.shared.error.Failure
@@ -12,12 +12,12 @@ import java.lang.Exception
 import java.net.SocketException
 
 class PeopleRepositoryImpl(
-    private val peopleDatasource: PeopleDatasource
+    private val peopleRemoteDatasource: PeopleRemoteDatasource
 ) : PeopleRepository {
     override suspend fun getPeopleByPage(page: Int): StateData<List<PersonEntity>> =
         withContext(Dispatchers.IO) {
             try {
-                val peopleEntities = peopleDatasource.getPeopleByPage(page).map { it.toEntity() }
+                val peopleEntities = peopleRemoteDatasource.getPeopleByPage(page).map { it.toEntity() }
                 StateData.Success(peopleEntities)
             } catch (e: Exception) {
                 when (e) {

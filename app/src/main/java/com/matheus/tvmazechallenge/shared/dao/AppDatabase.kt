@@ -6,7 +6,7 @@ import androidx.room.TypeConverters
 import com.matheus.tvmazechallenge.shared.dao.converter.StringListConverter
 
 @Database(
-    entities = [TVShowScheduleDAO::class, TVShowDAO::class],
+    entities = [TVShowDAO::class],
     version = 1
 )
 @TypeConverters(StringListConverter::class)
