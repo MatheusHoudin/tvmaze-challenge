@@ -11,7 +11,7 @@ import java.io.IOException
 import java.lang.Exception
 import java.net.SocketException
 
-class TVShowRepositoryImpl(
+class TVShowsRepositoryImpl(
     private val tvShowsRemoteDatasource: TVShowsRemoteDatasource
 ) : TVShowsRepository {
 
