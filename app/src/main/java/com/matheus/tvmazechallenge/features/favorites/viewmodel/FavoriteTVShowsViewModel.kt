@@ -28,7 +28,7 @@ class FavoriteTVShowsViewModel(
         get() = _favoriteTVShowsResult
 
     fun fetchFavoriteTVShows() = viewModelScope.launch {
-
+        _favoriteTVShowsResult.value = StateData.Loading()
         val favoriteTVShowsStateData = favoriteTVShowsRepository.getAllFavorites()
 
         if (favoriteTVShowsStateData is StateData.Success && favoriteTVShowsStateData.data.isEmpty()) {
@@ -39,10 +39,6 @@ class FavoriteTVShowsViewModel(
         _favoriteTVShowsResult.value = favoriteTVShowsStateData
     }
 
-    fun getFavoriteTVShow(tvShowId: Int) = viewModelScope.launch {
-        _favoriteEnabled.value = favoriteTVShowsRepository.getFavorite(tvShowId) != null
-    }
-
     fun updateFavoriteTVShow(tvShow: TVShowEntity) = viewModelScope.launch {
         val isFavoriteTVShow = favoriteTVShowsRepository.getFavorite(tvShowId = tvShow.id) != null
 
@@ -50,17 +46,20 @@ class FavoriteTVShowsViewModel(
             removeFavoriteTVShow(tvShow)
         else
             saveFavoriteTVShow(tvShow)
+
+        _isFavoriteAdded.value = !isFavoriteTVShow
+        getFavoriteTVShow(tvShow.id)
     }
 
     private fun saveFavoriteTVShow(tvShow: TVShowEntity) = viewModelScope.launch {
         favoriteTVShowsRepository.saveFavorite(tvShow.toModel())
-        getFavoriteTVShow(tvShow.id)
-        _isFavoriteAdded.value = true
     }
 
     private fun removeFavoriteTVShow(tvShow: TVShowEntity) = viewModelScope.launch {
         favoriteTVShowsRepository.removeFavorite(tvShow.toModel())
-        getFavoriteTVShow(tvShow.id)
-        _isFavoriteAdded.value = false
+    }
+
+    fun getFavoriteTVShow(tvShowId: Int) = viewModelScope.launch {
+        _favoriteEnabled.value = favoriteTVShowsRepository.getFavorite(tvShowId) != null
     }
 }

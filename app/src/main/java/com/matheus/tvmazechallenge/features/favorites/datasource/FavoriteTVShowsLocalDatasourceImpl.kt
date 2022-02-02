@@ -13,7 +13,7 @@ class FavoriteTVShowsLocalDatasourceImpl(
         tvShowDatabaseDAO.saveFavorite(tvShow.toDAO())
 
     override suspend fun removeFavorite(tvShow: TVShowModel) =
-        tvShowDatabaseDAO.remoteFavorite(tvShow.toDAO())
+        tvShowDatabaseDAO.removeFavorite(tvShow.toDAO())
 
     override suspend fun getAll() =
         tvShowDatabaseDAO.getAll().map { it.toModel() }

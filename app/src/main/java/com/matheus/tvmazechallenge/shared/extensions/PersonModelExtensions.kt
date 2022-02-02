@@ -2,9 +2,9 @@ package com.matheus.tvmazechallenge.shared.extensions
 
 import com.matheus.tvmazechallenge.features.people.entity.PersonEntity
 import com.matheus.tvmazechallenge.shared.Constants
-import com.matheus.tvmazechallenge.shared.model.PeopleModel
+import com.matheus.tvmazechallenge.shared.model.PersonModel
 
-fun PeopleModel.toEntity() = PersonEntity(
+fun PersonModel.toEntity() = PersonEntity(
     id = this.id,
     name = this.name,
     url = this.url,

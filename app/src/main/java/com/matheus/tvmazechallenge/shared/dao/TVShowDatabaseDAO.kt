@@ -13,7 +13,7 @@ interface TVShowDatabaseDAO {
     fun saveFavorite(tvShow: TVShowDAO)
 
     @Delete
-    fun remoteFavorite(tvShow: TVShowDAO)
+    fun removeFavorite(tvShow: TVShowDAO)
 
     @Query("SELECT * FROM tv_show WHERE id = :tvShowId")
     fun getFavorite(tvShowId: Int): TVShowDAO?

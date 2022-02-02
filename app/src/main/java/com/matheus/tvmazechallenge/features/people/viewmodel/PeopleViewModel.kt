@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.matheus.tvmazechallenge.features.people.entity.PersonEntity
-import com.matheus.tvmazechallenge.features.people.respository.PeopleRepository
+import com.matheus.tvmazechallenge.features.people.repository.PeopleRepository
 import com.matheus.tvmazechallenge.shared.base.StateData
 import kotlinx.coroutines.launch
 

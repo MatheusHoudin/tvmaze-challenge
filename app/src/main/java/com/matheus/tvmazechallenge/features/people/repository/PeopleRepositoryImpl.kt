@@ -1,4 +1,4 @@
-package com.matheus.tvmazechallenge.features.people.respository
+package com.matheus.tvmazechallenge.features.people.repository
 
 import com.matheus.tvmazechallenge.features.people.datasource.PeopleRemoteDatasource
 import com.matheus.tvmazechallenge.features.people.entity.PersonEntity

@@ -2,7 +2,7 @@ package com.matheus.tvmazechallenge.shared.model
 
 import com.google.gson.annotations.SerializedName
 
-data class PeopleModel(
+data class PersonModel(
     @SerializedName("id")
     val id: Int,
     @SerializedName("name")

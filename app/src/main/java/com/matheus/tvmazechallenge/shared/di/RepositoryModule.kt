@@ -2,8 +2,8 @@ package com.matheus.tvmazechallenge.shared.di
 
 import com.matheus.tvmazechallenge.features.favorites.repository.FavoriteTVShowsRepository
 import com.matheus.tvmazechallenge.features.favorites.repository.FavoriteTVShowsRepositoryImpl
-import com.matheus.tvmazechallenge.features.people.respository.PeopleRepository
-import com.matheus.tvmazechallenge.features.people.respository.PeopleRepositoryImpl
+import com.matheus.tvmazechallenge.features.people.repository.PeopleRepository
+import com.matheus.tvmazechallenge.features.people.repository.PeopleRepositoryImpl
 import com.matheus.tvmazechallenge.features.persondetails.repository.PersonDetailsRepository
 import com.matheus.tvmazechallenge.features.persondetails.repository.PersonDetailsRepositoryImpl
 import com.matheus.tvmazechallenge.features.search.repository.SearchTVShowRepository
