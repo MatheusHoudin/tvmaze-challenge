@@ -70,16 +70,46 @@ This project has two main folders as follows:
 
 On this folder is located all of the app's features, separated by a folder each. It helps to easily find a piece of code a developer may need. Inside each of those folders, there is another structure, which is described on the [Google architecture](https://github.com/MatheusHoudin/tvmaze-challenge/edit/main/README.md#google-architecture) section.
 
-The available folders
+The folders are the following ones:
+- [favorites](https://github.com/MatheusHoudin/tvmaze-challenge/tree/main/app/src/main/java/com/matheus/tvmazechallenge/features/favorites)
+- [people](https://github.com/MatheusHoudin/tvmaze-challenge/tree/main/app/src/main/java/com/matheus/tvmazechallenge/features/people)
+- [persondetails](https://github.com/MatheusHoudin/tvmaze-challenge/tree/main/app/src/main/java/com/matheus/tvmazechallenge/features/persondetails)
+- [search](https://github.com/MatheusHoudin/tvmaze-challenge/tree/main/app/src/main/java/com/matheus/tvmazechallenge/features/search)
+- [tvshowdetails](https://github.com/MatheusHoudin/tvmaze-challenge/tree/main/app/src/main/java/com/matheus/tvmazechallenge/features/tvshowdetails)
+- [tvshows](https://github.com/MatheusHoudin/tvmaze-challenge/tree/main/app/src/main/java/com/matheus/tvmazechallenge/features/tvshows)
 
 ### [shared](https://github.com/MatheusHoudin/tvmaze-challenge/tree/main/app/src/main/java/com/matheus/tvmazechallenge/shared)
 
 On this folder is located all of the resources commonly used by other parts of the app, for exemple different features.
 
-## Clean Architecture
+The folders are the following ones:
+- [adapter](https://github.com/MatheusHoudin/tvmaze-challenge/tree/main/app/src/main/java/com/matheus/tvmazechallenge/shared/adapter)
+Recycler view adapters
+- [api](https://github.com/MatheusHoudin/tvmaze-challenge/tree/main/app/src/main/java/com/matheus/tvmazechallenge/shared/api)
+Components responsible for creating a connection to a remote source
+- [base](https://github.com/MatheusHoudin/tvmaze-challenge/tree/main/app/src/main/java/com/matheus/tvmazechallenge/shared/base)
+Base classes with shared implementations
+- [bindingadapter](https://github.com/MatheusHoudin/tvmaze-challenge/tree/main/app/src/main/java/com/matheus/tvmazechallenge/shared/bindingadapter)
+View extensions for XML on Android
+- [components](https://github.com/MatheusHoudin/tvmaze-challenge/tree/main/app/src/main/java/com/matheus/tvmazechallenge/shared/components)
+Shared XML components
+- [dao](https://github.com/MatheusHoudin/tvmaze-challenge/tree/main/app/src/main/java/com/matheus/tvmazechallenge/shared/dao)
+Components responsible for communicating with local database(Room)
+- [di](https://github.com/MatheusHoudin/tvmaze-challenge/tree/main/app/src/main/java/com/matheus/tvmazechallenge/shared/di)
+Dependency injection componentes
+- [entity](https://github.com/MatheusHoudin/tvmaze-challenge/tree/main/app/src/main/java/com/matheus/tvmazechallenge/shared/entity)
+Components with business data to be presented on UI
+- [error](https://github.com/MatheusHoudin/tvmaze-challenge/tree/main/app/src/main/java/com/matheus/tvmazechallenge/shared/error)
+Components for declaring errors on the application
+- [extensions](https://github.com/MatheusHoudin/tvmaze-challenge/tree/main/app/src/main/java/com/matheus/tvmazechallenge/shared/extensions)
+Kotlin extension functions
+- [model](https://github.com/MatheusHoudin/tvmaze-challenge/tree/main/app/src/main/java/com/matheus/tvmazechallenge/shared/model)
+Classes responsible for defining contract on datasources
+- [util](https://github.com/MatheusHoudin/tvmaze-challenge/tree/main/app/src/main/java/com/matheus/tvmazechallenge/shared/util)
+General utility classes
 
-## Google architecture
-In order to develop this app, following [Google's recommended architecture](https://developer.android.com/jetpack/guide), the project is separated into layers as follows:
+## Architecture
+In order to develop this app, following [Google's recommended architecture](https://developer.android.com/jetpack/guide) and [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html), the project is separated into layers as follows:
 
 - OBS: Each feature has it's own layers, so that they become independent of each other, take a look at this example from [TV Show listing](https://github.com/MatheusHoudin/tvmaze-challenge/tree/main/app/src/main/java/com/matheus/tvmazechallenge/features/tvshows)
 
