@@ -46,17 +46,18 @@ class FavoriteTVShowsViewModel(
             removeFavoriteTVShow(tvShow)
         else
             saveFavoriteTVShow(tvShow)
-
-        _isFavoriteAdded.value = !isFavoriteTVShow
-        getFavoriteTVShow(tvShow.id)
     }
 
     private fun saveFavoriteTVShow(tvShow: TVShowEntity) = viewModelScope.launch {
         favoriteTVShowsRepository.saveFavorite(tvShow.toModel())
+        getFavoriteTVShow(tvShow.id)
+        _isFavoriteAdded.value = true
     }
 
     private fun removeFavoriteTVShow(tvShow: TVShowEntity) = viewModelScope.launch {
         favoriteTVShowsRepository.removeFavorite(tvShow.toModel())
+        getFavoriteTVShow(tvShow.id)
+        _isFavoriteAdded.value = false
     }
 
     fun getFavoriteTVShow(tvShowId: Int) = viewModelScope.launch {

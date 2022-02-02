@@ -59,7 +59,6 @@ class SearchShowsFragment : Fragment() {
     private fun configureSearchShowsListener(binding: SearchShowsFragmentBinding) = with(binding) {
         viewModel.showsResult.observe(viewLifecycleOwner) {
             shouldHideInstructions = true
-            searchShowsFragmentEmRetry.hideRetryButton()
             searchShowsTvStartSearching.visibility = View.GONE
             when (it) {
                 is StateData.Success -> {
@@ -73,8 +72,9 @@ class SearchShowsFragment : Fragment() {
                 }
                 is StateData.Failure -> {
                     with(searchShowsFragmentEmRetry) {
-                        Failure.notFoundShowsFailure
-                        showRetryButton()
+                        if (it == Failure.notFoundShowsFailure) {
+                            hideRetryButton()
+                        }
                         setErrorMessage(it.message)
                     }
                     thereIsError = true
