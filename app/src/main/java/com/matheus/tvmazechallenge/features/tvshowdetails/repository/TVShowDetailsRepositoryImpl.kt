@@ -10,8 +10,9 @@ import kotlinx.coroutines.withContext
 import java.io.IOException
 import java.lang.Exception
 import java.net.SocketException
+import javax.inject.Inject
 
-class TVShowDetailsRepositoryImpl(
+class TVShowDetailsRepositoryImpl @Inject constructor(
     private val tvShowDetailsRemoteDatasource: TVShowDetailsRemoteDatasource
 ) : TVShowDetailsRepository {
     override suspend fun getShowEpisodes(tvShowId: Int): StateData<List<TVShowSeasonEpisodesEntity>> =

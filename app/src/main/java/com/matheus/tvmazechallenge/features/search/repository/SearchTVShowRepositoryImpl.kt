@@ -10,8 +10,9 @@ import kotlinx.coroutines.withContext
 import java.io.IOException
 import java.lang.Exception
 import java.net.SocketException
+import javax.inject.Inject
 
-class SearchTVShowRepositoryImpl(
+class SearchTVShowRepositoryImpl @Inject constructor(
     private val searchTVShowRemoteDatasource: SearchTVShowRemoteDatasource
 ) : SearchTVShowRepository {
 

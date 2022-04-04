@@ -12,15 +12,30 @@ import com.matheus.tvmazechallenge.features.tvshowdetails.datasource.TVShowDetai
 import com.matheus.tvmazechallenge.features.tvshowdetails.datasource.TVShowDetailsRemoteDatasourceImpl
 import com.matheus.tvmazechallenge.features.tvshows.datasource.TVShowsRemoteDatasource
 import com.matheus.tvmazechallenge.features.tvshows.datasource.TVShowsRemoteDatasourceImpl
-import org.koin.dsl.module
+import dagger.Binds
+import dagger.Module
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 
-object DatasourceModule {
-    val datasourceModule = module {
-        single<TVShowsRemoteDatasource> { TVShowsRemoteDatasourceImpl(get()) }
-        single<SearchTVShowRemoteDatasource> { SearchTVShowRemoteDatasourceImpl(get()) }
-        single<TVShowDetailsRemoteDatasource> { TVShowDetailsRemoteDatasourceImpl(get()) }
-        single<PeopleRemoteDatasource> { PeopleRemoteDatasourceImpl(get()) }
-        single<PersonDetailsRemoteDatasource> { PersonDetailsRemoteDatasourceImpl(get()) }
-        single<FavoriteTVShowsLocalDatasource> { FavoriteTVShowsLocalDatasourceImpl(get()) }
-    }
+@Module
+@InstallIn(SingletonComponent::class)
+abstract class DatasourceModule {
+
+    @Binds
+    abstract fun bindTVShowsRemoteDatasource(impl: TVShowsRemoteDatasourceImpl): TVShowsRemoteDatasource
+
+    @Binds
+    abstract fun bindSearchTVShowRemoteDatasource(impl: SearchTVShowRemoteDatasourceImpl): SearchTVShowRemoteDatasource
+
+    @Binds
+    abstract fun bindTVShowDetailsRemoteDatasource(impl: TVShowDetailsRemoteDatasourceImpl): TVShowDetailsRemoteDatasource
+
+    @Binds
+    abstract fun bindPeopleRemoteDatasource(impl: PeopleRemoteDatasourceImpl): PeopleRemoteDatasource
+
+    @Binds
+    abstract fun bindPersonDetailsRemoteDatasource(impl: PersonDetailsRemoteDatasourceImpl): PersonDetailsRemoteDatasource
+
+    @Binds
+    abstract fun bindFavoriteTVShowsLocalDatasource(impl: FavoriteTVShowsLocalDatasourceImpl): FavoriteTVShowsLocalDatasource
 }

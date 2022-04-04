@@ -1,8 +1,9 @@
 package com.matheus.tvmazechallenge.features.persondetails.datasource
 
 import com.matheus.tvmazechallenge.shared.api.PeopleService
+import javax.inject.Inject
 
-class PersonDetailsRemoteDatasourceImpl(
+class PersonDetailsRemoteDatasourceImpl @Inject constructor(
     private val peopleService: PeopleService
 ) : PersonDetailsRemoteDatasource {
 

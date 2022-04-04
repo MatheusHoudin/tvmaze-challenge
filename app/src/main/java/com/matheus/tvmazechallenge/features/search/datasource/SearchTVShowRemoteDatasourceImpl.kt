@@ -1,8 +1,9 @@
 package com.matheus.tvmazechallenge.features.search.datasource
 
 import com.matheus.tvmazechallenge.shared.api.TVShowsService
+import javax.inject.Inject
 
-class SearchTVShowRemoteDatasourceImpl(
+class SearchTVShowRemoteDatasourceImpl @Inject constructor(
     private val showsService: TVShowsService
 ) : SearchTVShowRemoteDatasource {
 

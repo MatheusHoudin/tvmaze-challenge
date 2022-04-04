@@ -5,18 +5,25 @@ import androidx.room.Room
 import com.matheus.tvmazechallenge.shared.Constants
 import com.matheus.tvmazechallenge.shared.dao.AppDatabase
 import com.matheus.tvmazechallenge.shared.dao.TVShowDatabaseDAO
-import org.koin.android.ext.koin.androidContext
-import org.koin.dsl.module
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
+import dagger.hilt.components.SingletonComponent
+import javax.inject.Singleton
 
+@Module
+@InstallIn(SingletonComponent::class)
 object LocalDatabaseModule {
-    val localDatabaseModule = module {
-        single { provideDatabase(androidContext()) }
-        single { provideTVShowDatabaseDAO(get()) }
-    }
 
-    private fun provideDatabase(context: Context): AppDatabase =
-        Room.databaseBuilder(context, AppDatabase::class.java, Constants.DATABASE_NAME).build()
+    @Provides
+    @Singleton
+    fun provideDatabase(@ApplicationContext context: Context): AppDatabase =
+        Room.databaseBuilder(context, AppDatabase::class.java, Constants.DATABASE_NAME)
+            .fallbackToDestructiveMigration().build()
 
-    private fun provideTVShowDatabaseDAO(appDatabase: AppDatabase): TVShowDatabaseDAO =
+    @Provides
+    @Singleton
+    fun provideTVShowDatabaseDAO(appDatabase: AppDatabase): TVShowDatabaseDAO =
         appDatabase.tvShowDatabaseDao()
 }

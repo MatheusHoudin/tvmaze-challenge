@@ -8,9 +8,12 @@ import com.matheus.tvmazechallenge.features.tvshowdetails.entity.TVShowEpisodeEn
 import com.matheus.tvmazechallenge.features.tvshowdetails.entity.TVShowSeasonEpisodesEntity
 import com.matheus.tvmazechallenge.features.tvshowdetails.repository.TVShowDetailsRepository
 import com.matheus.tvmazechallenge.shared.base.StateData
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class TVShowDetailsViewModel(
+@HiltViewModel
+class TVShowDetailsViewModel @Inject constructor(
     private val tvShowDetailsRepository: TVShowDetailsRepository
 ) : ViewModel() {
 

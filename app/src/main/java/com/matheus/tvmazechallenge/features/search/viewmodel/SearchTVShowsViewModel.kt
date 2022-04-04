@@ -8,9 +8,12 @@ import com.matheus.tvmazechallenge.features.search.repository.SearchTVShowReposi
 import com.matheus.tvmazechallenge.features.tvshows.entity.TVShowEntity
 import com.matheus.tvmazechallenge.shared.base.StateData
 import com.matheus.tvmazechallenge.shared.error.Failure
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class SearchTVShowsViewModel(
+@HiltViewModel
+class SearchTVShowsViewModel @Inject constructor(
     private val searchTVShowRepository: SearchTVShowRepository
 ) : ViewModel() {
 

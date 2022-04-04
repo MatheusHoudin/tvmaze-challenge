@@ -7,9 +7,12 @@ import androidx.lifecycle.viewModelScope
 import com.matheus.tvmazechallenge.features.people.entity.PersonEntity
 import com.matheus.tvmazechallenge.features.people.repository.PeopleRepository
 import com.matheus.tvmazechallenge.shared.base.StateData
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class PeopleViewModel(
+@HiltViewModel
+class PeopleViewModel @Inject constructor(
     private val peopleRepository: PeopleRepository
 ) : ViewModel() {
 

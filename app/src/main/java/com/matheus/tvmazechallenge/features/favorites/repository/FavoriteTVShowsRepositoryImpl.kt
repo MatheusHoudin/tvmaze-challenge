@@ -9,8 +9,9 @@ import com.matheus.tvmazechallenge.shared.model.TVShowModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.lang.Exception
+import javax.inject.Inject
 
-class FavoriteTVShowsRepositoryImpl(
+class FavoriteTVShowsRepositoryImpl @Inject constructor(
     private val favoriteTVShowsLocalDatasource: FavoriteTVShowsLocalDatasource
 ) : FavoriteTVShowsRepository {
 

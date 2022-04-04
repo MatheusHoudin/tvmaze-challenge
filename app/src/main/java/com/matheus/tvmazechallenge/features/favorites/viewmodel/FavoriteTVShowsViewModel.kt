@@ -9,9 +9,12 @@ import com.matheus.tvmazechallenge.features.tvshows.entity.TVShowEntity
 import com.matheus.tvmazechallenge.shared.base.StateData
 import com.matheus.tvmazechallenge.shared.error.Failure
 import com.matheus.tvmazechallenge.shared.extensions.toModel
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class FavoriteTVShowsViewModel(
+@HiltViewModel
+class FavoriteTVShowsViewModel @Inject constructor(
     private val favoriteTVShowsRepository: FavoriteTVShowsRepository
 ) : ViewModel() {
 

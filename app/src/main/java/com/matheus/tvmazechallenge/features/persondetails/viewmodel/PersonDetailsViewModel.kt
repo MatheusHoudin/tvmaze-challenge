@@ -8,9 +8,12 @@ import com.matheus.tvmazechallenge.features.persondetails.entity.CastCreditsEnti
 import com.matheus.tvmazechallenge.features.persondetails.repository.PersonDetailsRepository
 import com.matheus.tvmazechallenge.shared.base.StateData
 import com.matheus.tvmazechallenge.shared.error.Failure
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class PersonDetailsViewModel(
+@HiltViewModel
+class PersonDetailsViewModel @Inject constructor(
     private val personDetailsRepository: PersonDetailsRepository
 ) : ViewModel() {
 

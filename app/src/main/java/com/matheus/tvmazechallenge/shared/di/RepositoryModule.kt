@@ -10,17 +10,32 @@ import com.matheus.tvmazechallenge.features.search.repository.SearchTVShowReposi
 import com.matheus.tvmazechallenge.features.search.repository.SearchTVShowRepositoryImpl
 import com.matheus.tvmazechallenge.features.tvshowdetails.repository.TVShowDetailsRepository
 import com.matheus.tvmazechallenge.features.tvshowdetails.repository.TVShowDetailsRepositoryImpl
-import com.matheus.tvmazechallenge.features.tvshows.repository.TVShowsRepositoryImpl
 import com.matheus.tvmazechallenge.features.tvshows.repository.TVShowsRepository
-import org.koin.dsl.module
+import com.matheus.tvmazechallenge.features.tvshows.repository.TVShowsRepositoryImpl
+import dagger.Binds
+import dagger.Module
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 
-object RepositoryModule {
-    val repositoryModule = module {
-        single<TVShowsRepository> { TVShowsRepositoryImpl(get()) }
-        single<SearchTVShowRepository> { SearchTVShowRepositoryImpl(get()) }
-        single<TVShowDetailsRepository> { TVShowDetailsRepositoryImpl(get()) }
-        single<PeopleRepository> { PeopleRepositoryImpl(get()) }
-        single<PersonDetailsRepository> { PersonDetailsRepositoryImpl(get()) }
-        single<FavoriteTVShowsRepository> { FavoriteTVShowsRepositoryImpl(get()) }
-    }
+@Module
+@InstallIn(SingletonComponent::class)
+abstract class RepositoryModule {
+
+    @Binds
+    abstract fun bindTVShowsRepository(impl: TVShowsRepositoryImpl): TVShowsRepository
+
+    @Binds
+    abstract fun bindSearchTVShowRepository(impl: SearchTVShowRepositoryImpl): SearchTVShowRepository
+
+    @Binds
+    abstract fun bindTVShowDetailsRepository(impl: TVShowDetailsRepositoryImpl): TVShowDetailsRepository
+
+    @Binds
+    abstract fun bindPeopleRepository(impl: PeopleRepositoryImpl): PeopleRepository
+
+    @Binds
+    abstract fun bindPersonDetailsRepository(impl: PersonDetailsRepositoryImpl): PersonDetailsRepository
+
+    @Binds
+    abstract fun bindFavoriteTVShowsRepository(impl: FavoriteTVShowsRepositoryImpl): FavoriteTVShowsRepository
 }

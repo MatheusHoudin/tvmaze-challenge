@@ -7,9 +7,12 @@ import androidx.lifecycle.viewModelScope
 import com.matheus.tvmazechallenge.features.tvshows.entity.TVShowEntity
 import com.matheus.tvmazechallenge.features.tvshows.repository.TVShowsRepository
 import com.matheus.tvmazechallenge.shared.base.StateData
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class TVShowsViewModel(
+@HiltViewModel
+class TVShowsViewModel @Inject constructor(
     private val tvShowsRepository: TVShowsRepository
 ) : ViewModel() {
 
@@ -19,6 +22,10 @@ class TVShowsViewModel(
     private val _showsResult = MutableLiveData<StateData<List<TVShowEntity>>>()
     val showsResult: LiveData<StateData<List<TVShowEntity>>>
         get() = _showsResult
+
+    init {
+        fetchShows()
+    }
 
     fun fetchShows() {
         viewModelScope.launch {

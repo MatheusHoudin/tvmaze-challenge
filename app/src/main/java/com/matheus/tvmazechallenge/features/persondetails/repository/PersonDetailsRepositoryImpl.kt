@@ -10,8 +10,9 @@ import kotlinx.coroutines.withContext
 import java.io.IOException
 import java.lang.Exception
 import java.net.SocketException
+import javax.inject.Inject
 
-class PersonDetailsRepositoryImpl(
+class PersonDetailsRepositoryImpl @Inject constructor(
     private val personDetailsRemoteDatasource: PersonDetailsRemoteDatasource
 ) : PersonDetailsRepository {
 

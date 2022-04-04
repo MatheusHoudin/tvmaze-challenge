@@ -4,8 +4,9 @@ import com.matheus.tvmazechallenge.shared.dao.TVShowDatabaseDAO
 import com.matheus.tvmazechallenge.shared.extensions.toDAO
 import com.matheus.tvmazechallenge.shared.extensions.toModel
 import com.matheus.tvmazechallenge.shared.model.TVShowModel
+import javax.inject.Inject
 
-class FavoriteTVShowsLocalDatasourceImpl(
+class FavoriteTVShowsLocalDatasourceImpl @Inject constructor(
     private val tvShowDatabaseDAO: TVShowDatabaseDAO
 ) : FavoriteTVShowsLocalDatasource {
 

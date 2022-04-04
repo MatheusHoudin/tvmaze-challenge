@@ -10,8 +10,9 @@ import kotlinx.coroutines.withContext
 import java.io.IOException
 import java.lang.Exception
 import java.net.SocketException
+import javax.inject.Inject
 
-class PeopleRepositoryImpl(
+class PeopleRepositoryImpl @Inject constructor(
     private val peopleRemoteDatasource: PeopleRemoteDatasource
 ) : PeopleRepository {
     override suspend fun getPeopleByPage(page: Int): StateData<List<PersonEntity>> =
