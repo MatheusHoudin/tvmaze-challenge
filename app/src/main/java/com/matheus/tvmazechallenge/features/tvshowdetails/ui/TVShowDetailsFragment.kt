@@ -14,9 +14,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.matheus.tvmazechallenge.R
 import com.matheus.tvmazechallenge.databinding.TvShowDetailsFragmentBinding
 import com.matheus.tvmazechallenge.features.favorites.viewmodel.FavoriteTVShowsViewModel
-import com.matheus.tvmazechallenge.features.tvshowdetails.ui.adapter.TVShowEpisodeAdapter
-import com.matheus.tvmazechallenge.features.tvshowdetails.ui.adapter.TVShowEpisodeScheduleAdapter
-import com.matheus.tvmazechallenge.features.tvshowdetails.ui.adapter.TVShowGenreAdapter
+import com.matheus.tvmazechallenge.features.tvshowdetails.ui.components.TVShowEpisodeAdapter
+import com.matheus.tvmazechallenge.features.tvshowdetails.ui.components.TVShowEpisodeScheduleAdapter
+import com.matheus.tvmazechallenge.features.tvshowdetails.ui.components.TVShowGenreAdapter
 import com.matheus.tvmazechallenge.features.tvshowdetails.viewmodel.TVShowDetailsViewModel
 import com.matheus.tvmazechallenge.shared.base.StateData
 import com.matheus.tvmazechallenge.shared.extensions.toSeasonList

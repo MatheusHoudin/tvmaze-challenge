@@ -2,11 +2,8 @@ package com.matheus.tvmazechallenge.features.tvshows.ui
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.lazy.*
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.livedata.observeAsState
-import androidx.compose.ui.graphics.Color
-import androidx.compose.runtime.getValue
 import com.matheus.tvmazechallenge.features.tvshows.entity.TVShowEntity
 import com.matheus.tvmazechallenge.features.tvshows.viewmodel.TVShowsViewModel
 import com.matheus.tvmazechallenge.shared.base.StateData

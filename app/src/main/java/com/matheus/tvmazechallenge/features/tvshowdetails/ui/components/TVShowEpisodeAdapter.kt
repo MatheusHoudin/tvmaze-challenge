@@ -1,4 +1,4 @@
-package com.matheus.tvmazechallenge.features.tvshowdetails.ui.adapter
+package com.matheus.tvmazechallenge.features.tvshowdetails.ui.components
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

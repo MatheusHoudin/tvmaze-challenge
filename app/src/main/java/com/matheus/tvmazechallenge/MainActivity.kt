@@ -68,6 +68,11 @@ class MainActivity : AppCompatActivity() {
                     fontFamily = firaSans,
                     fontWeight = FontWeight.SemiBold,
                     fontSize = 16.sp
+                ),
+                subtitle2 = TextStyle(
+                    fontFamily = firaSans,
+                    fontWeight = FontWeight.Normal,
+                    fontSize = 14.sp
                 )
             )
         ) {
