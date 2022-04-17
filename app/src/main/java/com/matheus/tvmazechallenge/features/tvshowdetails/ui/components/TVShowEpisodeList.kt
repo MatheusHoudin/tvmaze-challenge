@@ -2,6 +2,8 @@ package com.matheus.tvmazechallenge.features.tvshowdetails.ui.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -21,7 +23,16 @@ import com.matheus.tvmazechallenge.R
 import com.matheus.tvmazechallenge.features.tvshowdetails.entity.TVShowEpisodeEntity
 
 @Composable
-fun TVShowEpisodeComposable(tvShowEpisodeEntity: TVShowEpisodeEntity) {
+fun TVShowEpisodeList(episodes: List<TVShowEpisodeEntity>) {
+    LazyColumn() {
+        items(episodes) { episode ->
+            TVShowEpisodeComposable(tvShowEpisodeEntity = episode)
+        }
+    }
+}
+
+@Composable
+private fun TVShowEpisodeComposable(tvShowEpisodeEntity: TVShowEpisodeEntity) {
     Column(
         modifier = Modifier
             .padding(bottom = 18.dp)
@@ -37,7 +48,7 @@ fun TVShowEpisodeComposable(tvShowEpisodeEntity: TVShowEpisodeEntity) {
 }
 
 @Composable
-fun TVShowEpisodeHeader(imageUrl: String, episodeName: String, episodeNumber: String) {
+private fun TVShowEpisodeHeader(imageUrl: String, episodeName: String, episodeNumber: String) {
     Row(
         modifier = Modifier.fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically
@@ -68,10 +79,12 @@ fun TVShowEpisodeHeader(imageUrl: String, episodeName: String, episodeNumber: St
 }
 
 @Composable
-fun TVShowEpisodeDescription(episodeDescription: String) {
+private fun TVShowEpisodeDescription(episodeDescription: String) {
     Text(
         text = episodeDescription,
-        modifier = Modifier.padding(top = 12.dp).fillMaxWidth(),
+        modifier = Modifier
+            .padding(top = 12.dp)
+            .fillMaxWidth(),
         textAlign = TextAlign.Justify,
         style = MaterialTheme.typography.subtitle2,
         fontSize = 14.sp,
