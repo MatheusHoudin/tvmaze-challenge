@@ -27,7 +27,7 @@ import com.matheus.tvmazechallenge.shared.util.AppColors
 @Composable
 fun ImageDescriptionItem(
     tvShowEntity: TVShowEntity,
-    onClick: () -> Unit
+    onTVShowClicked: () -> Unit
 ) {
     Column(
         modifier = Modifier
@@ -36,7 +36,7 @@ fun ImageDescriptionItem(
                 vertical = 12.dp
             )
             .background(AppColors.tvMazeMainColor)
-            .clickable { onClick() },
+            .clickable { onTVShowClicked() },
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Image(

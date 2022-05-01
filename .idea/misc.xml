@@ -8,11 +8,21 @@
         <entry key="../../../../layout/compose-model-1650238009911.xml" value="0.24577702702702703" />
         <entry key="../../../../layout/compose-model-1650238048837.xml" value="0.67" />
         <entry key="../../../../layout/compose-model-1650238072699.xml" value="0.33425925925925926" />
+        <entry key="../../../../layout/compose-model-1650239857518.xml" value="0.1" />
+        <entry key="../../../../layout/compose-model-1650239889814.xml" value="0.1" />
+        <entry key="../../../../layout/compose-model-1650239988431.xml" value="0.1" />
+        <entry key="../../../../layout/compose-model-1650241544019.xml" value="0.1037037037037037" />
+        <entry key="../../../../layout/compose-model-1650244024282.xml" value="0.25" />
+        <entry key="../../../../layout/compose-model-1650244153850.xml" value="0.5" />
+        <entry key="../../../../layout/compose-model-1650317677733.xml" value="0.5" />
+        <entry key="../../../../layout/compose-model-1650360710466.xml" value="0.23703703703703705" />
         <entry key="../../../.gradle/caches/transforms-3/b9537ce0c90d0b19e9dd20bb78a129f2/transformed/appcompat-1.4.1/res/layout/support_simple_spinner_dropdown_item.xml" value="0.33125" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2115" />
         <entry key="app/src/main/res/drawable/bottom_navigation.xml" value="0.251" />
+        <entry key="app/src/main/res/drawable/ic_back.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_baseline_favorite_24.xml" value="0.251" />
         <entry key="app/src/main/res/drawable/ic_favorite.xml" value="0.282" />
+        <entry key="app/src/main/res/drawable/ic_home.xml" value="0.135" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.2115" />
         <entry key="app/src/main/res/drawable/ic_search.xml" value="0.2125" />
         <entry key="app/src/main/res/drawable/people_details_dialog_background.xml" value="0.1" />
@@ -40,7 +50,7 @@
         <entry key="app/src/main/res/layout/person_details_layout.xml" value="0.33" />
         <entry key="app/src/main/res/layout/search_shows_fragment.xml" value="0.22" />
         <entry key="app/src/main/res/layout/search_shows_fragment_layout.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/tv_show_details_fragment.xml" value="0.33469805527123847" />
+        <entry key="app/src/main/res/layout/tv_show_details_fragment.xml" value="0.1" />
         <entry key="app/src/main/res/layout/tv_show_episode_item_layout.xml" value="0.340625" />
         <entry key="app/src/main/res/layout/tv_show_episode_schedule_item_layout.xml" value="0.2966485507246377" />
         <entry key="app/src/main/res/layout/tv_show_genre_item_layout.xml" value="0.33" />

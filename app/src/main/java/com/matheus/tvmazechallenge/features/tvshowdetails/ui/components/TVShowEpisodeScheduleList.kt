@@ -34,7 +34,9 @@ private data class EpisodeSchedule(
 @Composable
 fun TVShowEpisodeScheduleList(episodeSchedule: List<String>) {
     LazyRow(
-        modifier = Modifier.padding(top = 8.dp).height(36.dp),
+        modifier = Modifier
+            .padding(top = 8.dp)
+            .height(26.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(8.dp)
     ) {
@@ -87,4 +89,20 @@ fun TVShowEpisodeSchedulePreview() {
             "Saturday"
         )
     )
+}
+
+@Preview
+@Composable
+fun TVShowEpisodeScheduleActivePreview() {
+    Box(modifier = Modifier.height(36.dp)) {
+        TVShowEpisodeSchedule(EpisodeSchedule("Mon", true))
+    }
+}
+
+@Preview
+@Composable
+fun TVShowEpisodeScheduleInactivePreview() {
+    Box(modifier = Modifier.height(36.dp)) {
+        TVShowEpisodeSchedule(EpisodeSchedule("Mon", false))
+    }
 }
