@@ -59,20 +59,17 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"/>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/search_shows_fragment_rv_shows"
+            <androidx.compose.ui.platform.ComposeView
+                android:id="@+id/search_shows_fragment_list_shows"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:textAlignment="center"
-                android:layout_marginBottom="56dp"
-                android:layout_marginTop="12dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                isGone="@{isLoadingShows || thereIsError}"
-                app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
-                app:spanCount="2"/>
+                android:layout_marginBottom="56dp"
+                android:layout_marginTop="12dp"
+                isGone="@{isLoadingShows || thereIsError}"/>
 
             <com.google.android.material.progressindicator.CircularProgressIndicator
                 android:layout_width="60dp"
