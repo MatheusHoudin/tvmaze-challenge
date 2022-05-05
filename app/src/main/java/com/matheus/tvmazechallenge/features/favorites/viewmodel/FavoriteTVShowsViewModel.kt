@@ -30,6 +30,10 @@ class FavoriteTVShowsViewModel @Inject constructor(
     val favoriteTVShowsResult: LiveData<StateData<List<TVShowEntity>>>
         get() = _favoriteTVShowsResult
 
+    init {
+        fetchFavoriteTVShows()
+    }
+
     fun fetchFavoriteTVShows() = viewModelScope.launch {
         _favoriteTVShowsResult.value = StateData.Loading()
         val favoriteTVShowsStateData = favoriteTVShowsRepository.getAllFavorites()

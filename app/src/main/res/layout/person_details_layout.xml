@@ -23,37 +23,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/person_details_dialog_background">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/person_details_cl_header"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toEndOf="parent">
-
-                <View
-                    android:layout_width="60dp"
-                    android:layout_height="6dp"
-                    android:background="@drawable/person_details_header_indicator_background"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"/>
-
-                <ImageView
-                    android:id="@+id/person_details_iv_close"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/ic_close"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:theme="@style/rippleEffect"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            android:background="@color/tvmaze_light_main_color">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/person_details_cl_person_section"
@@ -62,7 +32,7 @@
                 android:layout_marginTop="20dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/person_details_cl_header">
+                app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
                     android:id="@+id/cast_credit_show_iv_show_image"
@@ -131,7 +101,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/person_details_tv_cast_credits"/>
 
-                <androidx.recyclerview.widget.RecyclerView
+                <androidx.compose.ui.platform.ComposeView
                     android:id="@+id/person_details_rv_cast_credits"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

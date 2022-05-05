@@ -23,6 +23,10 @@ class PeopleViewModel @Inject constructor(
     val peopleResult: LiveData<StateData<List<PersonEntity>>>
         get() = _peopleResult
 
+    init {
+        fetchPeople()
+    }
+
     fun fetchPeople() {
         viewModelScope.launch {
             _peopleResult.value = StateData.Loading()

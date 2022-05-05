@@ -68,7 +68,10 @@ class SearchShowsFragment : Fragment() {
                     searchShowsFragmentListShows.setContent {
                         LazyVerticalGrid(cells = GridCells.Fixed(2)) {
                             items(it.data) { tvShowEntity ->
-                                ImageDescriptionItem(tvShowEntity = tvShowEntity) {
+                                ImageDescriptionItem(
+                                    imageUrl = tvShowEntity.poster,
+                                    description = tvShowEntity.name
+                                ) {
                                     onTVShowClicked(
                                         tvShowEntity
                                     )

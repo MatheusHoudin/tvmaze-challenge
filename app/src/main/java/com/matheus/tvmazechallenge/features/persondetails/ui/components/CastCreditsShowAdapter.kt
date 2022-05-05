@@ -1,4 +1,4 @@
-package com.matheus.tvmazechallenge.features.persondetails.ui.adapter
+package com.matheus.tvmazechallenge.features.persondetails.ui.components
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

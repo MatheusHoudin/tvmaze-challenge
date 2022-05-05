@@ -1,5 +1,6 @@
 package com.matheus.tvmazechallenge
 
+import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -22,21 +23,19 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import androidx.navigation.findNavController
 import androidx.compose.runtime.*
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import com.google.gson.Gson
-import com.matheus.tvmazechallenge.databinding.ActivityMainBinding
 import com.matheus.tvmazechallenge.features.favorites.ui.FavoriteShowsPage
 import com.matheus.tvmazechallenge.features.favorites.viewmodel.FavoriteTVShowsViewModel
 import com.matheus.tvmazechallenge.features.people.ui.PeoplePage
+import com.matheus.tvmazechallenge.features.persondetails.ui.PersonDetailsActivity
 import com.matheus.tvmazechallenge.features.search.ui.SearchShowsPage
 import com.matheus.tvmazechallenge.features.tvshowdetails.ui.TVShowDetailsPage
 import com.matheus.tvmazechallenge.features.tvshowdetails.viewmodel.TVShowDetailsViewModel
 import com.matheus.tvmazechallenge.features.tvshows.entity.TVShowEntity
 import com.matheus.tvmazechallenge.features.tvshows.ui.TVShowPage
-import com.matheus.tvmazechallenge.shared.extensions.isGone
-import com.matheus.tvmazechallenge.shared.extensions.isVisible
 import com.matheus.tvmazechallenge.shared.util.AppColors
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -52,19 +51,9 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun configureBottomNavigationVisibilityListener(binding: ActivityMainBinding) {
-        findNavController(R.id.nav_host).addOnDestinationChangedListener { _, destination, _ ->
-            if (destination.id == R.id.tvShowDetailsFragment) {
-                binding.bottomNavigation.isGone()
-                return@addOnDestinationChangedListener
-            }
-
-            binding.bottomNavigation.isVisible()
-        }
-    }
-
     @Composable
     private fun TVMazeChallenge() {
+        val context = LocalContext.current
         val firaSans = FontFamily(
             Font(R.font.firasans_regular),
             Font(R.font.firasans_semibold, FontWeight.SemiBold),
@@ -107,10 +96,16 @@ class MainActivity : AppCompatActivity() {
                         SearchShowsPage()
                     }
                     composable("Favorites") {
-                        FavoriteShowsPage()
+                        FavoriteShowsPage {
+                            navController.navigate("TVShowDetailsPage/${Uri.encode(Gson().toJson(it))}")
+                        }
                     }
                     composable("People") {
-                        PeoplePage()
+                        PeoplePage {
+                            val intent = Intent(context, PersonDetailsActivity::class.java)
+                            intent.putExtra("person", it)
+                            context.startActivity(intent)
+                        }
                     }
                     composable("TVShowDetailsPage/{tvShowEntity}") {
                         val tvShowEntity = Gson().fromJson(
@@ -145,7 +140,12 @@ class MainActivity : AppCompatActivity() {
         BottomNavigation {
             navOptions.forEach { item ->
                 BottomNavigationItem(
-                    icon = { Icon(painter = painterResource(id = item.icon), contentDescription = "") },
+                    icon = {
+                        Icon(
+                            painter = painterResource(id = item.icon),
+                            contentDescription = ""
+                        )
+                    },
                     label = { Text(text = stringResource(id = item.title)) },
                     selected = currentRoute == item.screenRoute,
                     onClick = {
@@ -157,13 +157,20 @@ class MainActivity : AppCompatActivity() {
     }
 
     sealed class BottomNavItem(
-        @StringRes val title:Int,
-        @DrawableRes val icon:Int,
-        val screenRoute:String
+        @StringRes val title: Int,
+        @DrawableRes val icon: Int,
+        val screenRoute: String
     ) {
-        object Home : BottomNavItem(R.string.bottom_navigation_home, R.drawable.ic_home,"TVShowPage")
-        object MyNetwork: BottomNavItem(R.string.bottom_navigation_search,R.drawable.ic_search,"Search")
-        object AddPost: BottomNavItem(R.string.bottom_navigation_favorites,R.drawable.ic_favorite,"Favorites")
-        object Notification: BottomNavItem(R.string.bottom_navigation_people,R.drawable.ic_people,"People")
+        object Home :
+            BottomNavItem(R.string.bottom_navigation_home, R.drawable.ic_home, "TVShowPage")
+
+        object MyNetwork :
+            BottomNavItem(R.string.bottom_navigation_search, R.drawable.ic_search, "Search")
+
+        object AddPost :
+            BottomNavItem(R.string.bottom_navigation_favorites, R.drawable.ic_favorite, "Favorites")
+
+        object Notification :
+            BottomNavItem(R.string.bottom_navigation_people, R.drawable.ic_people, "People")
     }
 }

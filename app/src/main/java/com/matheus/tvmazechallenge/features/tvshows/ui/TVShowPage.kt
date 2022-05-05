@@ -27,7 +27,10 @@ fun TVShowPage(
             val listState = rememberLazyListState()
             LazyVerticalGrid(cells = GridCells.Fixed(2), state = listState) {
                 items(showsState.data) {
-                    ImageDescriptionItem(tvShowEntity = it) { onTVShowClicked(it) }
+                    ImageDescriptionItem(
+                        imageUrl = it.poster,
+                        description = it.name
+                    ) { onTVShowClicked(it) }
                 }
             }
             listState.OnBottomReached {

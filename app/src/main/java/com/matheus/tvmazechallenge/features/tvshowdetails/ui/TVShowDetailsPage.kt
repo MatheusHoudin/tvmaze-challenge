@@ -42,9 +42,7 @@ fun TVShowDetailsPage(
     val tvShowSelectedEpisodes: List<TVShowEpisodeEntity> =
         viewModel.selectedEpisodes.observeAsState(emptyList()).value
 
-    val isFavorite: Boolean? = favoriteTVShowViewModel.isFavoriteAdded.observeAsState().value
-
-    // PROCURAR COMO MOSTRAR TOAST
+    val isFavorite: Boolean? = favoriteTVShowViewModel.favoriteEnabled.observeAsState().value
 
     ShowTVShowDetailsContent(
         tvShowEntity = tvShowEntity,

@@ -26,7 +26,8 @@ import com.matheus.tvmazechallenge.shared.util.AppColors
 
 @Composable
 fun ImageDescriptionItem(
-    tvShowEntity: TVShowEntity,
+    description: String,
+    imageUrl: String,
     onTVShowClicked: () -> Unit
 ) {
     Column(
@@ -40,37 +41,17 @@ fun ImageDescriptionItem(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Image(
-            painter = rememberGlidePainter(tvShowEntity.poster),
+            painter = rememberGlidePainter(imageUrl),
             contentDescription = "",
             contentScale = ContentScale.Fit,
             modifier = Modifier.width(150.dp).height(200.dp).clip(RoundedCornerShape(8.dp))
         )
         Text(
-            text = tvShowEntity.name,
+            text = description,
             color = Color.White,
             textAlign = TextAlign.Center,
             style = MaterialTheme.typography.body1,
             modifier = Modifier.padding(top = 8.dp)
         )
-    }
-}
-
-@Composable
-@Preview
-private fun Preview() {
-    MaterialTheme {
-        ImageDescriptionItem(
-            TVShowEntity(
-                id = 1,
-                name = "A cool item",
-                poster = "https://www.google.com/url?sa=i&url=https%3A%2F%2Fandroid-developers.googleblog.com%2F2020%2F08%2Fannouncing-jetpack-compose-alpha.html&psig=AOvVaw2d7soXvIO_7z79WVfVfZS1&ust=1648588958608000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCKimkMze6fYCFQAAAAAdAAAAABAD",
-                url = "",
-                schedule = TVShowScheduleEntity("", emptyList()),
-                genres = emptyList(),
-                summary = ""
-            )
-        ) {
-
-        }
     }
 }
