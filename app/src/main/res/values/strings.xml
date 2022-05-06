@@ -28,6 +28,7 @@
 
     <string name="cast_credits_show_see_more_details">See more details</string>
     <string name="cast_credits_show_open_on_web">Open website</string>
+    <string name="interoperable_message">Android XML text component</string>
 
     <string name="person_details_open_on_web">Open website</string>
     <string name="title_activity_person_details">PersonDetailsActivity</string>

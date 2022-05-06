@@ -7,6 +7,9 @@ import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.viewinterop.AndroidView
+import com.matheus.tvmazechallenge.R
 
 @Composable
 fun SearchShowsPage() {
@@ -19,6 +22,13 @@ fun SearchShowsPage() {
             textVisibility = !textVisibility
             //notAffectedText = "$notAffectedText - new"
         }
+//        AndroidView(
+//            factory = {
+//                InteroperableAndroidComponent(it).apply {
+//                    setMessage(resources.getString(R.string.interoperable_message))
+//                }
+//            }
+//        )
     }
 }
 
