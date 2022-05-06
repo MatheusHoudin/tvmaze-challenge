@@ -26,6 +26,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.compose.runtime.*
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.navigation.navArgument
 import com.google.gson.Gson
 import com.matheus.tvmazechallenge.features.favorites.ui.FavoriteShowsPage
 import com.matheus.tvmazechallenge.features.favorites.viewmodel.FavoriteTVShowsViewModel
@@ -33,6 +34,7 @@ import com.matheus.tvmazechallenge.features.people.ui.PeoplePage
 import com.matheus.tvmazechallenge.features.persondetails.ui.PersonDetailsActivity
 import com.matheus.tvmazechallenge.features.search.ui.SearchShowsPage
 import com.matheus.tvmazechallenge.features.tvshowdetails.ui.TVShowDetailsPage
+import com.matheus.tvmazechallenge.features.tvshowdetails.ui.navigation.TVShowNavType
 import com.matheus.tvmazechallenge.features.tvshowdetails.viewmodel.TVShowDetailsViewModel
 import com.matheus.tvmazechallenge.features.tvshows.entity.TVShowEntity
 import com.matheus.tvmazechallenge.features.tvshows.ui.TVShowPage
@@ -89,7 +91,7 @@ class MainActivity : AppCompatActivity() {
                 ) {
                     composable("TVShowPage") {
                         TVShowPage {
-                            navController.navigate("TVShowDetailsPage/${Uri.encode(Gson().toJson(it))}")
+                            navController.navigate("TVShowDetailsPage/$it")
                         }
                     }
                     composable("Search") {
@@ -97,7 +99,7 @@ class MainActivity : AppCompatActivity() {
                     }
                     composable("Favorites") {
                         FavoriteShowsPage {
-                            navController.navigate("TVShowDetailsPage/${Uri.encode(Gson().toJson(it))}")
+                            navController.navigate("TVShowDetailsPage/$it")
                         }
                     }
                     composable("People") {
@@ -107,16 +109,16 @@ class MainActivity : AppCompatActivity() {
                             context.startActivity(intent)
                         }
                     }
-                    composable("TVShowDetailsPage/{tvShowEntity}") {
-                        val tvShowEntity = Gson().fromJson(
-                            it.arguments?.getString("tvShowEntity"),
-                            TVShowEntity::class.java
-                        )
+                    composable(
+                        "TVShowDetailsPage/{tvShowEntity}",
+                        arguments = listOf(navArgument("tvShowEntity") { type = TVShowNavType() })
+                    ) {
+                        val tvShowEntity = it.arguments?.getParcelable<TVShowEntity>("tvShowEntity")
 
                         val viewModel: TVShowDetailsViewModel = hiltViewModel()
                         val favoriteTVShowsViewModel: FavoriteTVShowsViewModel = hiltViewModel()
 
-                        viewModel.fetchTVShowEpisodes(tvShowEntity.id)
+                        viewModel.fetchTVShowEpisodes(tvShowEntity!!.id)
                         favoriteTVShowsViewModel.getFavoriteTVShow(tvShowEntity.id)
 
                         TVShowDetailsPage(
