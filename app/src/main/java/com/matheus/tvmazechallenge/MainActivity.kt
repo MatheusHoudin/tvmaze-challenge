@@ -112,10 +112,13 @@ class MainActivity : AppCompatActivity() {
                             it.arguments?.getString("tvShowEntity"),
                             TVShowEntity::class.java
                         )
+
                         val viewModel: TVShowDetailsViewModel = hiltViewModel()
                         val favoriteTVShowsViewModel: FavoriteTVShowsViewModel = hiltViewModel()
+
                         viewModel.fetchTVShowEpisodes(tvShowEntity.id)
                         favoriteTVShowsViewModel.getFavoriteTVShow(tvShowEntity.id)
+
                         TVShowDetailsPage(
                             tvShowEntity = tvShowEntity,
                             viewModel = viewModel,
